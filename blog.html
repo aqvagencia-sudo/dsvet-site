@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog DS VET – Dicas de Saúde para Cães e Gatos | Guará II Brasília</title>
+  <meta name="description" content="Dicas de saúde veterinária para cães e gatos. Conteúdo criado pelos veterinários da DS VET no Guará II, Brasília." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--green:#1B6E3A;--green-dark:#124D28;--green-light:#E8F5EE;--orange:#F05A28;--gray:#6B7280}
+    body{font-family:'Inter',sans-serif;color:#1A1A1A;background:#fff}
+    header{background:var(--green-dark);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+    .logo{color:#fff;font-size:20px;font-weight:800}.logo span{color:#7FD9A2}
+    .back{color:#7FD9A2;text-decoration:none;font-size:14px;font-weight:600}
+    .hero-blog{background:linear-gradient(135deg,var(--green-dark),var(--green));color:#fff;padding:48px 24px;text-align:center}
+    .hero-blog h1{font-size:clamp(24px,4vw,36px);font-weight:900;margin-bottom:10px}
+    .hero-blog p{font-size:16px;opacity:.85}
+    .container{max-width:1060px;margin:0 auto;padding:0 24px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;padding:48px 0}
+    .post-card{border:1px solid #E5E7EB;border-radius:14px;overflow:hidden;transition:transform .2s,box-shadow .2s;text-decoration:none;color:inherit;display:block}
+    .post-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.1)}
+    .post-img{width:100%;height:200px;object-fit:cover;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:64px}
+    .post-body{padding:20px}
+    .post-tag{display:inline-block;background:var(--green-light);color:var(--green);padding:3px 10px;border-radius:50px;font-size:11px;font-weight:700;margin-bottom:10px;text-transform:uppercase}
+    .post-title{font-size:17px;font-weight:700;margin-bottom:8px;line-height:1.35}
+    .post-desc{font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:14px}
+    .post-meta{font-size:12px;color:#9CA3AF}
+    footer{background:#1A1A1A;color:rgba(255,255,255,.65);padding:24px;text-align:center;font-size:13px}
+    footer a{color:#7FD9A2;text-decoration:none}
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">DS <span>VET</span></div>
+  <a class="back" href="index.html">← Voltar ao site</a>
+</header>
+
+<div class="hero-blog">
+  <div class="container">
+    <h1>Blog DS VET</h1>
+    <p>Dicas de saúde e bem-estar para cães e gatos — pelos veterinários do Guará II</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="grid">
+
+    <a class="post-card" href="blog/sinais-doenca-renal-gatos.html">
+      <div class="post-img">🐱</div>
+      <div class="post-body">
+        <span class="post-tag">Nefrologia</span>
+        <h2 class="post-title">7 sinais de doença renal em gatos que todo tutor precisa conhecer</h2>
+        <p class="post-desc">A doença renal é uma das condições mais comuns em gatos adultos. Identifique os sinais precocemente e salve a vida do seu pet.</p>
+        <div class="post-meta">DS VET · Guará II, Brasília</div>
+      </div>
+    </a>
+
+    <a class="post-card" href="blog/vacinas-cachorro-calendario.html">
+      <div class="post-img">💉</div>
+      <div class="post-body">
+        <span class="post-tag">Prevenção</span>
+        <h2 class="post-title">Calendário completo de vacinas para cães — do filhote ao adulto</h2>
+        <p class="post-desc">Saiba quais vacinas seu cachorro precisa tomar, em que idade e com qual frequência. Guia completo e atualizado.</p>
+        <div class="post-meta">DS VET · Guará II, Brasília</div>
+      </div>
+    </a>
+
+    <a class="post-card" href="blog/alergia-pele-caes.html">
+      <div class="post-img">🌿</div>
+      <div class="post-body">
+        <span class="post-tag">Dermatologia</span>
+        <h2 class="post-title">Alergia de pele em cães: causas, sintomas e tratamento</h2>
+        <p class="post-desc">Seu cachorro coça demais? Pode ser alergia. Descubra as principais causas e como tratar com ajuda de um veterinário dermatologista.</p>
+        <div class="post-meta">DS VET · Guará II, Brasília</div>
+      </div>
+    </a>
+
+    <a class="post-card" href="blog/diabetes-em-pets.html">
+      <div class="post-img">⚗️</div>
+      <div class="post-body">
+        <span class="post-tag">Endocrinologia</span>
+        <h2 class="post-title">Diabetes em cães e gatos: como identificar e controlar</h2>
+        <p class="post-desc">A diabetes afeta cada vez mais pets. Aprenda a reconhecer os sintomas e entenda como funciona o tratamento com insulina.</p>
+        <div class="post-meta">DS VET · Guará II, Brasília</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <strong style="color:#fff">DS VET – Clínica Veterinária</strong> · QE 40 Conjunto K, Loja 12 — Guará II, Brasília<br>
+  <a href="tel:+5561993939232">(61) 99393-9232</a> · <a href="https://instagram.com/dsveterinaria">@dsveterinaria</a>
+</footer>
+</body>
+</html>

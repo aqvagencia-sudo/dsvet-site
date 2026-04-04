@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel Admin — DS VET Clínica Veterinária</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:       #1B6E3A;
+      --green-dark:  #124D28;
+      --green-light: #E8F5EE;
+      --orange:      #F05A28;
+      --orange-dark: #D44A1A;
+      --white:       #FFFFFF;
+      --gray-light:  #F7F8FA;
+      --gray:        #6B7280;
+      --text:        #1A1A1A;
+      --border:      #E5E7EB;
+      --red:         #EF4444;
+      --red-light:   #FEF2F2;
+      --yellow:      #F59E0B;
+      --yellow-light:#FFFBEB;
+      --radius:      12px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--gray-light); min-height: 100vh; }
+
+    /* ── TELA DE LOGIN ── */
+    #login-screen {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+      padding: 24px;
+    }
+    .login-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 40px 32px;
+      width: 100%; max-width: 400px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      text-align: center;
+    }
+    .login-logo { font-size: 28px; font-weight: 900; color: var(--green-dark); margin-bottom: 6px; letter-spacing: -.5px; }
+    .login-logo span { color: var(--green); }
+    .login-subtitle { font-size: 14px; color: var(--gray); margin-bottom: 32px; }
+    .login-form { display: flex; flex-direction: column; gap: 16px; text-align: left; }
+    .login-form label { font-size: 13px; font-weight: 600; display: block; margin-bottom: 6px; }
+    .login-form input {
+      width: 100%; padding: 13px 16px;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-size: 15px; font-family: 'Inter', sans-serif;
+      transition: border-color .2s;
+    }
+    .login-form input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(27,110,58,.12); }
+    .login-form input.error { border-color: var(--red); }
+    .login-error { font-size: 13px; color: var(--red); text-align: center; display: none; }
+    .login-error.show { display: block; }
+    .btn-login {
+      width: 100%; padding: 14px;
+      background: var(--green); color: #fff;
+      border: none; border-radius: 10px;
+      font-size: 16px; font-weight: 700; font-family: 'Inter', sans-serif;
+      cursor: pointer; transition: background .2s;
+    }
+    .btn-login:hover { background: var(--green-dark); }
+
+    /* ── APP PRINCIPAL ── */
+    #app { display: none; }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--green-dark);
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+    .logo-link { color: #fff; font-size: 20px; font-weight: 800; letter-spacing: -.5px; text-decoration: none; }
+    .logo-link span { color: #7FD9A2; }
+    .header-right { display: flex; align-items: center; gap: 16px; }
+    .back-link {
+      color: rgba(255,255,255,.75); text-decoration: none; font-size: 13px; font-weight: 500;
+      transition: color .2s;
+    }
+    .back-link:hover { color: #fff; }
+    .btn-logout {
+      background: rgba(255,255,255,.12); color: #fff;
+      border: 1px solid rgba(255,255,255,.25); border-radius: 8px;
+      padding: 7px 16px; font-size: 13px; font-weight: 600;
+      cursor: pointer; font-family: 'Inter', sans-serif;
+      transition: background .2s;
+    }
+    .btn-logout:hover { background: rgba(255,255,255,.22); }
+
+    /* ── ABAS ── */
+    .tabs-wrap {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex; gap: 0;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      padding: 16px 22px;
+      border: none; background: none;
+      font-size: 14px; font-weight: 600; font-family: 'Inter', sans-serif;
+      color: var(--gray); cursor: pointer;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: color .2s, border-color .2s;
+    }
+    .tab-btn.active { color: var(--green); border-bottom-color: var(--green); }
+    .tab-btn:hover:not(.active) { color: var(--text); }
+
+    /* ── CONTAINER ── */
+    .main-container { max-width: 1100px; margin: 0 auto; padding: 28px 16px 64px; }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0,0,0,.04);
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .card-title { font-size: 17px; font-weight: 800; color: var(--green-dark); }
+    .card-body { padding: 24px; }
+
+    /* ── BADGE ── */
+    .badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 3px 10px; border-radius: 50px;
+      font-size: 12px; font-weight: 700;
+    }
+    .badge-green { background: var(--green-light); color: var(--green); }
+    .badge-red   { background: var(--red-light); color: var(--red); }
+    .badge-yellow { background: var(--yellow-light); color: var(--yellow); }
+    .badge-gray  { background: #F3F4F6; color: var(--gray); }
+
+    /* ── FILTROS ── */
+    .filtros-row {
+      display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+    }
+    .filtros-row label { font-size: 13px; font-weight: 600; color: var(--text); }
+    .filtros-row input[type="date"],
+    .filtros-row select {
+      padding: 9px 13px;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-size: 14px; font-family: 'Inter', sans-serif; color: var(--text);
+      background: var(--white);
+      transition: border-color .2s;
+    }
+    .filtros-row input[type="date"]:focus,
+    .filtros-row select:focus { outline: none; border-color: var(--green); }
+
+    /* ── TABELA ── */
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    thead tr { background: var(--gray-light); }
+    thead th {
+      padding: 12px 14px; text-align: left;
+      font-size: 12px; font-weight: 700; color: var(--gray);
+      text-transform: uppercase; letter-spacing: .5px;
+      white-space: nowrap;
+    }
+    tbody tr { border-top: 1px solid var(--border); transition: background .15s; }
+    tbody tr:hover { background: #FAFAFA; }
+    tbody td { padding: 13px 14px; vertical-align: middle; }
+    .td-hora { font-size: 16px; font-weight: 800; color: var(--green-dark); white-space: nowrap; }
+    .td-medico { font-weight: 600; }
+    .td-tutor .tutor-nome { font-weight: 600; }
+    .td-tutor .tutor-tel { font-size: 12px; color: var(--gray); margin-top: 2px; }
+    .td-pet .pet-nome { font-weight: 600; }
+    .td-pet .pet-esp { font-size: 12px; color: var(--gray); margin-top: 2px; }
+    .actions-cell { display: flex; gap: 8px; white-space: nowrap; }
+
+    /* ── BOTÕES DE AÇÃO ── */
+    .btn-action {
+      padding: 7px 14px; border-radius: 8px;
+      font-size: 13px; font-weight: 600; font-family: 'Inter', sans-serif;
+      cursor: pointer; border: none; transition: all .2s;
+    }
+    .btn-remarcar { background: var(--green-light); color: var(--green); }
+    .btn-remarcar:hover { background: var(--green); color: #fff; }
+    .btn-cancelar { background: var(--red-light); color: var(--red); }
+    .btn-cancelar:hover { background: var(--red); color: #fff; }
+    .btn-primary {
+      padding: 10px 18px; border-radius: 8px;
+      background: var(--green); color: #fff;
+      border: none; font-size: 14px; font-weight: 700; font-family: 'Inter', sans-serif;
+      cursor: pointer; transition: background .2s;
+    }
+    .btn-primary:hover { background: var(--green-dark); }
+    .btn-primary:disabled { background: var(--gray); cursor: not-allowed; }
+    .btn-secondary {
+      padding: 10px 16px; border-radius: 8px;
+      background: transparent; color: var(--gray);
+      border: 1.5px solid var(--border); font-size: 14px; font-weight: 600; font-family: 'Inter', sans-serif;
+      cursor: pointer; transition: all .2s;
+    }
+    .btn-secondary:hover { border-color: var(--green); color: var(--green); }
+    .btn-danger {
+      padding: 8px 14px; border-radius: 8px;
+      background: var(--red-light); color: var(--red);
+      border: none; font-size: 13px; font-weight: 600; font-family: 'Inter', sans-serif;
+      cursor: pointer; transition: all .2s;
+    }
+    .btn-danger:hover { background: var(--red); color: #fff; }
+    .btn-toggle-ativo {
+      padding: 6px 12px; border-radius: 6px;
+      font-size: 12px; font-weight: 700; font-family: 'Inter', sans-serif;
+      cursor: pointer; border: none; transition: all .2s;
+    }
+    .btn-toggle-ativo.ativo { background: var(--red-light); color: var(--red); }
+    .btn-toggle-ativo.ativo:hover { background: var(--red); color: #fff; }
+    .btn-toggle-ativo.inativo { background: var(--green-light); color: var(--green); }
+    .btn-toggle-ativo.inativo:hover { background: var(--green); color: #fff; }
+
+    /* ── ESTADOS VAZIOS ── */
+    .empty-state, .loading-state {
+      text-align: center; padding: 48px 20px;
+    }
+    .empty-state .empty-icon, .loading-state .spinner-icon { font-size: 36px; margin-bottom: 10px; }
+    .empty-state p, .loading-state p { font-size: 14px; color: var(--gray); }
+    .loading-spinner {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 3px solid var(--green-light); border-top-color: var(--green);
+      animation: spin .8s linear infinite; margin: 0 auto 12px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── ABA MÉDICOS ── */
+    .medicos-list { display: flex; flex-direction: column; gap: 10px; }
+    .medico-row {
+      display: flex; align-items: center; gap: 14px;
+      padding: 16px 20px;
+      border: 1px solid var(--border); border-radius: 10px;
+      background: var(--white);
+      flex-wrap: wrap;
+    }
+    .medico-avatar-sm {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--green); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 800; flex-shrink: 0;
+    }
+    .medico-info { flex: 1; min-width: 120px; }
+    .medico-info .nome { font-size: 15px; font-weight: 700; }
+    .medico-info .espec { font-size: 13px; color: var(--gray); }
+    .medico-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* ── FORMULÁRIO NOVO MÉDICO ── */
+    .form-novo-medico {
+      display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end;
+      padding: 20px;
+      background: var(--green-light);
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    .form-novo-medico .fng {
+      display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 160px;
+    }
+    .form-novo-medico label { font-size: 12px; font-weight: 600; }
+    .form-novo-medico input {
+      padding: 10px 12px;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-size: 14px; font-family: 'Inter', sans-serif;
+      background: var(--white);
+    }
+    .form-novo-medico input:focus { outline: none; border-color: var(--green); }
+
+    /* ── ABA HORÁRIOS ── */
+    .horarios-config-row {
+      display: flex; gap: 14px; flex-wrap: wrap; align-items: flex-end;
+      margin-bottom: 24px;
+    }
+    .horarios-config-row .fg {
+      display: flex; flex-direction: column; gap: 5px;
+    }
+    .horarios-config-row label { font-size: 13px; font-weight: 600; }
+    .horarios-config-row select,
+    .horarios-config-row input[type="date"] {
+      padding: 10px 12px;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-size: 14px; font-family: 'Inter', sans-serif;
+      background: var(--white);
+    }
+    .horarios-config-row select:focus,
+    .horarios-config-row input[type="date"]:focus { outline: none; border-color: var(--green); }
+
+    .slots-list {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-bottom: 24px;
+    }
+    .slot-item {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 14px; font-weight: 700;
+    }
+    .slot-item.livre { background: var(--green-light); color: var(--green-dark); border: 1.5px solid rgba(27,110,58,.2); }
+    .slot-item.ocupado { background: var(--red-light); color: var(--red); border: 1.5px solid rgba(239,68,68,.2); }
+    .slot-remove {
+      background: none; border: none; cursor: pointer;
+      color: inherit; font-size: 16px; line-height: 1;
+      padding: 0 2px; opacity: .65; transition: opacity .2s;
+    }
+    .slot-remove:hover { opacity: 1; }
+    .slot-ocupado-label { font-size: 10px; font-weight: 600; opacity: .75; }
+
+    .add-slot-row {
+      display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+      padding: 16px 20px;
+      background: var(--gray-light); border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .add-slot-row input[type="time"] {
+      padding: 9px 12px;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-size: 14px; font-family: 'Inter', sans-serif;
+    }
+    .add-slot-row input[type="time"]:focus { outline: none; border-color: var(--green); }
+
+    .batch-row {
+      display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap;
+      padding: 16px 20px;
+      background: var(--yellow-light); border-radius: 10px;
+      border: 1px solid rgba(245,158,11,.2);
+    }
+    .batch-row .fg {
+      display: flex; flex-direction: column; gap: 5px;
+    }
+    .batch-row label { font-size: 12px; font-weight: 600; }
+    .batch-row input[type="time"],
+    .batch-row input[type="number"] {
+      padding: 9px 12px;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-size: 14px; font-family: 'Inter', sans-serif;
+      background: var(--white);
+    }
+    .batch-row input:focus { outline: none; border-color: var(--yellow); }
+    .batch-title { font-size: 13px; font-weight: 700; color: #92400E; width: 100%; margin-bottom: 4px; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.55);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 500; padding: 16px;
+      opacity: 0; pointer-events: none;
+      transition: opacity .25s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--white);
+      border-radius: 16px;
+      width: 100%; max-width: 500px;
+      max-height: 85vh; overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+      transform: translateY(20px);
+      transition: transform .25s;
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+    .modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .modal-title { font-size: 17px; font-weight: 800; color: var(--green-dark); }
+    .modal-close {
+      background: none; border: none; cursor: pointer;
+      font-size: 20px; color: var(--gray);
+      padding: 4px; line-height: 1;
+      transition: color .2s;
+    }
+    .modal-close:hover { color: var(--text); }
+    .modal-body { padding: 24px; }
+    .modal-footer { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; gap: 10px; justify-content: flex-end; }
+
+    /* ── CONFIRMAR MODAL (simples) ── */
+    #confirm-modal .modal-body { text-align: center; padding: 32px 24px; }
+    #confirm-modal .confirm-icon { font-size: 40px; margin-bottom: 12px; }
+    #confirm-modal h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+    #confirm-modal p { font-size: 14px; color: var(--gray); line-height: 1.5; }
+
+    /* ── TOAST ── */
+    #toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      background: #1A1A1A; color: #fff;
+      padding: 12px 22px; border-radius: 50px;
+      font-size: 14px; font-weight: 500;
+      box-shadow: 0 4px 20px rgba(0,0,0,.25);
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s;
+      z-index: 999; white-space: nowrap;
+    }
+    #toast.show { opacity: 1; }
+    #toast.error { background: var(--red); }
+    #toast.success { background: var(--green); }
+
+    /* ── RESPONSIVO ── */
+    @media (max-width: 600px) {
+      .card-header { flex-direction: column; align-items: flex-start; }
+      thead th:nth-child(n+5) { display: none; }
+      tbody td:nth-child(n+5) { display: none; }
+    }
+    @media (max-width: 768px) {
+      .tabs-wrap { padding: 0 12px; }
+      .tab-btn { padding: 14px 14px; font-size: 13px; }
+      .main-container { padding: 16px 12px 48px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── TELA DE LOGIN ── -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">DS <span>VET</span></div>
+    <div class="login-subtitle">Painel Administrativo — Acesso Restrito</div>
+    <form class="login-form" onsubmit="fazerLogin(event)">
+      <div>
+        <label for="inp-senha">Senha</label>
+        <input type="password" id="inp-senha" placeholder="Digite a senha" autocomplete="current-password" />
+        <div class="login-error" id="login-error">Senha incorreta. Tente novamente.</div>
+      </div>
+      <button type="submit" class="btn-login">Entrar</button>
+    </form>
+  </div>
+</div>
+
+<!-- ── APLICAÇÃO ── -->
+<div id="app">
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo-link">DS <span>VET</span> <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,.6);margin-left:8px;">Admin</span></a>
+    <div class="header-right">
+      <a href="index.html" class="back-link">← Voltar ao site</a>
+      <button class="btn-logout" onclick="logout()">Sair</button>
+    </div>
+  </header>
+
+  <!-- ABAS -->
+  <div class="tabs-wrap">
+    <button class="tab-btn active" onclick="mudarAba('agendamentos')" id="tab-agendamentos">
+      📅 Agendamentos <span id="badge-hoje" style="margin-left:6px;"></span>
+    </button>
+    <button class="tab-btn" onclick="mudarAba('medicos')" id="tab-medicos">🩺 Médicos</button>
+    <button class="tab-btn" onclick="mudarAba('horarios')" id="tab-horarios">🕐 Horários</button>
+  </div>
+
+  <!-- CONTEÚDO -->
+  <div class="main-container">
+
+    <!-- ══════════════════════════════════
+         ABA: AGENDAMENTOS
+    ══════════════════════════════════ -->
+    <div id="aba-agendamentos">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">
+              Agendamentos
+              <span id="count-badge" class="badge badge-green" style="margin-left:10px;font-size:13px;"></span>
+            </div>
+          </div>
+          <div class="filtros-row">
+            <label for="filtro-data">Data:</label>
+            <input type="date" id="filtro-data" onchange="carregarAgendamentos()" />
+          </div>
+        </div>
+        <div id="agendamentos-container">
+          <div class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Carregando agendamentos...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         ABA: MÉDICOS
+    ══════════════════════════════════ -->
+    <div id="aba-medicos" style="display:none;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Médicos Cadastrados</div>
+        </div>
+        <div class="card-body">
+          <div id="medicos-list-container">
+            <div class="loading-state"><div class="loading-spinner"></div><p>Carregando...</p></div>
+          </div>
+
+          <!-- FORMULÁRIO NOVO MÉDICO -->
+          <div class="form-novo-medico">
+            <div class="fng">
+              <label for="nm-nome">Nome do médico *</label>
+              <input type="text" id="nm-nome" placeholder="Dr(a). Nome" />
+            </div>
+            <div class="fng">
+              <label for="nm-espec">Especialidade *</label>
+              <input type="text" id="nm-espec" placeholder="Clínica Geral" />
+            </div>
+            <button class="btn-primary" onclick="adicionarMedico()">+ Adicionar médico</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         ABA: HORÁRIOS
+    ══════════════════════════════════ -->
+    <div id="aba-horarios" style="display:none;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Gerenciar Horários</div>
+        </div>
+        <div class="card-body">
+          <!-- SELEÇÃO MÉDICO + DATA -->
+          <div class="horarios-config-row">
+            <div class="fg">
+              <label for="hor-medico">Médico</label>
+              <select id="hor-medico" onchange="carregarSlotsAdmin()">
+                <option value="">Selecione um médico</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label for="hor-data">Data</label>
+              <input type="date" id="hor-data" onchange="carregarSlotsAdmin()" />
+            </div>
+            <button class="btn-primary" style="margin-bottom:0;" onclick="carregarSlotsAdmin()">Carregar</button>
+          </div>
+
+          <!-- SLOTS EXISTENTES -->
+          <div id="slots-container" style="display:none;">
+            <div style="font-size:13px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;">
+              Slots existentes
+            </div>
+            <div id="slots-list" class="slots-list"></div>
+
+            <!-- ADICIONAR SLOT MANUAL -->
+            <div class="add-slot-row">
+              <span style="font-size:13px;font-weight:600;">Adicionar slot:</span>
+              <input type="time" id="add-slot-hora" />
+              <button class="btn-primary" onclick="adicionarSlotManual()">+ Adicionar</button>
+            </div>
+
+            <!-- GERAR EM LOTE -->
+            <div class="batch-row">
+              <div class="batch-title">⚡ Gerar horários em lote</div>
+              <div class="fg">
+                <label>Hora inicial</label>
+                <input type="time" id="batch-inicio" value="08:00" />
+              </div>
+              <div class="fg">
+                <label>Hora final</label>
+                <input type="time" id="batch-fim" value="17:00" />
+              </div>
+              <div class="fg">
+                <label>Intervalo (min)</label>
+                <input type="number" id="batch-intervalo" value="30" min="5" max="120" style="width:80px;" />
+              </div>
+              <button class="btn-primary" onclick="gerarLote()">Gerar</button>
+            </div>
+          </div>
+
+          <div id="slots-empty" style="display:none;">
+            <div class="empty-state"><div class="empty-icon">📅</div><p>Selecione um médico e uma data para gerenciar os slots.</p></div>
+          </div>
+          <div id="slots-loading" style="display:none;">
+            <div class="loading-state"><div class="loading-spinner"></div><p>Carregando slots...</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main-container -->
+</div><!-- /app -->
+
+<!-- ══════════════════════════════════
+     MODAL REMARCAR
+══════════════════════════════════ -->
+<div class="modal-overlay" id="modal-remarcar">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Remarcar agendamento</div>
+      <button class="modal-close" onclick="fecharModal('modal-remarcar')">×</button>
+    </div>
+    <div class="modal-body">
+      <div style="margin-bottom:16px;">
+        <div style="font-size:13px;font-weight:600;margin-bottom:6px;">Médico</div>
+        <div id="rem-medico-info" style="font-size:15px;font-weight:700;color:var(--green-dark);"></div>
+      </div>
+      <div style="margin-bottom:20px;">
+        <label style="font-size:13px;font-weight:600;display:block;margin-bottom:6px;">Nova data</label>
+        <input type="date" id="rem-data" onchange="carregarHorariosRemarcar()" style="padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;width:100%;max-width:200px;" />
+      </div>
+      <div id="rem-horarios-wrap" style="display:none;">
+        <div style="font-size:13px;font-weight:600;margin-bottom:10px;">Horários disponíveis</div>
+        <div id="rem-horarios-grid" style="display:flex;flex-wrap:wrap;gap:10px;"></div>
+      </div>
+      <div id="rem-loading" style="display:none;"><div class="loading-state"><div class="loading-spinner"></div><p>Carregando horários...</p></div></div>
+      <div id="rem-empty" style="display:none;"><div class="empty-state"><div class="empty-icon">🕐</div><p>Nenhum horário disponível nesta data.</p></div></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="fecharModal('modal-remarcar')">Cancelar</button>
+      <button class="btn-primary" id="btn-confirmar-remarca" disabled onclick="confirmarRemarca()">Confirmar remarca</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     MODAL CONFIRMAÇÃO GENÉRICA
+══════════════════════════════════ -->
+<div class="modal-overlay" id="confirm-modal">
+  <div class="modal" style="max-width:380px;">
+    <div class="modal-body" id="confirm-modal-body">
+      <div class="confirm-icon" id="confirm-icon">⚠️</div>
+      <h3 id="confirm-title">Confirmar</h3>
+      <p id="confirm-msg">Deseja continuar?</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="fecharModal('confirm-modal')">Cancelar</button>
+      <button class="btn-primary" id="btn-confirm-ok" onclick="">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- ── FIREBASE ── -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<script>
+// ══════════════════════════════════════
+// FIREBASE CONFIG — SUBSTITUA PELOS SEUS DADOS
+// ══════════════════════════════════════
+const firebaseConfig = {
+  apiKey:            "COLE_SUA_API_KEY",
+  authDomain:        "SEU_PROJETO.firebaseapp.com",
+  projectId:         "SEU_PROJETO_ID",
+  storageBucket:     "SEU_PROJETO.appspot.com",
+  messagingSenderId: "SEU_SENDER_ID",
+  appId:             "SEU_APP_ID"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+const SENHA = 'dsvet2025';
+
+// ══════════════════════════════════════
+// LOGIN
+// ══════════════════════════════════════
+function fazerLogin(e) {
+  e.preventDefault();
+  const senha = document.getElementById('inp-senha').value;
+  const errEl = document.getElementById('login-error');
+  const inp = document.getElementById('inp-senha');
+  if (senha === SENHA) {
+    sessionStorage.setItem('dsvet_admin', '1');
+    errEl.classList.remove('show');
+    inp.classList.remove('error');
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    initApp();
+  } else {
+    errEl.classList.add('show');
+    inp.classList.add('error');
+    inp.value = '';
+    inp.focus();
+  }
+}
+
+function logout() {
+  sessionStorage.removeItem('dsvet_admin');
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('inp-senha').value = '';
+}
+
+// Verifica sessão ao carregar
+window.addEventListener('DOMContentLoaded', () => {
+  if (sessionStorage.getItem('dsvet_admin') === '1') {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    initApp();
+  }
+});
+
+// ══════════════════════════════════════
+// UTILITÁRIOS
+// ══════════════════════════════════════
+function showToast(msg, type = '') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'show' + (type ? ' ' + type : '');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => { t.className = ''; }, 3200);
+}
+
+function getTodayStr() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function formatDataBR(str) {
+  if (!str) return '';
+  const [y,m,d] = str.split('-');
+  return `${d}/${m}/${y}`;
+}
+
+function capitalizarMotivo(m) {
+  const map = { 'consulta rotina':'Consulta de Rotina','vacina':'Vacinação','retorno':'Retorno','emergência':'Emergência' };
+  return map[m] || (m ? m.charAt(0).toUpperCase() + m.slice(1) : '');
+}
+
+function horaParaMinutos(h) {
+  const [hh,mm] = h.split(':').map(Number);
+  return hh * 60 + mm;
+}
+
+function minutosParaHora(min) {
+  const h = Math.floor(min / 60);
+  const m = min % 60;
+  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+}
+
+// ══════════════════════════════════════
+// MODAL
+// ══════════════════════════════════════
+function abrirModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function fecharModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+function confirmarAcao({ icon, titulo, msg, txtBtn, onConfirm, danger = false }) {
+  document.getElementById('confirm-icon').textContent = icon || '⚠️';
+  document.getElementById('confirm-title').textContent = titulo || 'Confirmar';
+  document.getElementById('confirm-msg').textContent = msg || '';
+  const btnOk = document.getElementById('btn-confirm-ok');
+  btnOk.textContent = txtBtn || 'Confirmar';
+  btnOk.className = danger ? 'btn-danger' : 'btn-primary';
+  btnOk.onclick = () => { fecharModal('confirm-modal'); onConfirm(); };
+  abrirModal('confirm-modal');
+}
+
+// Fechar modal clicando no overlay
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) fecharModal(overlay.id);
+  });
+});
+
+// ══════════════════════════════════════
+// ABAS
+// ══════════════════════════════════════
+function mudarAba(aba) {
+  ['agendamentos','medicos','horarios'].forEach(a => {
+    document.getElementById(`aba-${a}`).style.display = a === aba ? 'block' : 'none';
+    document.getElementById(`tab-${a}`).classList.toggle('active', a === aba);
+  });
+  if (aba === 'medicos') carregarMedicos();
+  if (aba === 'horarios') iniciarAbaHorarios();
+}
+
+// ══════════════════════════════════════
+// INIT
+// ══════════════════════════════════════
+function initApp() {
+  // Define data padrão: hoje
+  const hoje = getTodayStr();
+  document.getElementById('filtro-data').value = hoje;
+  document.getElementById('hor-data').value = hoje;
+  // Inicializa a primeira aba
+  carregarAgendamentos();
+}
+
+// ══════════════════════════════════════
+// ABA 1 — AGENDAMENTOS
+// ══════════════════════════════════════
+async function carregarAgendamentos() {
+  const container = document.getElementById('agendamentos-container');
+  const data = document.getElementById('filtro-data').value;
+  if (!data) return;
+
+  container.innerHTML = `<div class="loading-state"><div class="loading-spinner"></div><p>Carregando agendamentos...</p></div>`;
+
+  try {
+    const snap = await db.collection('agendamentos')
+      .where('data', '==', data)
+      .orderBy('horario')
+      .get();
+
+    const total = snap.size;
+    const badgeEl = document.getElementById('count-badge');
+    const countEl = document.getElementById('count-badge');
+    countEl.textContent = `${total} agendamento${total !== 1 ? 's' : ''}`;
+    countEl.style.display = total > 0 ? 'inline-flex' : 'none';
+
+    if (snap.empty) {
+      container.innerHTML = `<div class="empty-state"><div class="empty-icon">📅</div><p>Nenhum agendamento para ${formatDataBR(data)}.</p></div>`;
+      return;
+    }
+
+    const agendamentos = [];
+    snap.forEach(doc => agendamentos.push({ id: doc.id, ...doc.data() }));
+
+    const html = `
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Horário</th>
+              <th>Médico</th>
+              <th>Tutor</th>
+              <th>Pet</th>
+              <th>Motivo</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${agendamentos.map(a => `
+              <tr data-id="${a.id}">
+                <td class="td-hora">${a.horario || '—'}</td>
+                <td class="td-medico">Dr(a). ${a.medicoNome || '—'}</td>
+                <td class="td-tutor">
+                  <div class="tutor-nome">${a.nomeCliente || '—'}</div>
+                  <div class="tutor-tel">${a.telefone || ''}</div>
+                </td>
+                <td class="td-pet">
+                  <div class="pet-nome">${a.nomePet || '—'}</div>
+                  <div class="pet-esp">${a.especie || ''}</div>
+                </td>
+                <td><span class="badge badge-green">${capitalizarMotivo(a.motivo)}</span></td>
+                <td>
+                  <div class="actions-cell">
+                    <button class="btn-action btn-remarcar" onclick="abrirRemarcar('${a.id}','${a.medicoId}','${a.medicoNome}','${a.data}','${a.horario}')">Remarcar</button>
+                    <button class="btn-action btn-cancelar" onclick="cancelarAgendamento('${a.id}','${a.medicoId}','${a.data}','${a.horario}')">Cancelar</button>
+                  </div>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+    container.innerHTML = html;
+
+  } catch (e) {
+    console.error(e);
+    // Se o erro for índice não criado, mostra mensagem
+    if (e.code === 'failed-precondition' || (e.message && e.message.includes('index'))) {
+      container.innerHTML = `<div class="empty-state"><div class="empty-icon">⚠️</div><p>É necessário criar um índice composto no Firestore para a coleção "agendamentos" nos campos "data" (asc) e "horario" (asc).<br><a href="https://console.firebase.google.com" target="_blank" style="color:var(--green);">Acessar Console Firebase</a></p></div>`;
+    } else {
+      container.innerHTML = `<div class="empty-state"><div class="empty-icon">⚠️</div><p>Erro ao carregar agendamentos.<br><small>${e.message}</small></p></div>`;
+    }
+  }
+}
+
+async function cancelarAgendamento(agId, medicoId, data, horario) {
+  confirmarAcao({
+    icon: '🗑️',
+    titulo: 'Cancelar agendamento',
+    msg: `Deseja cancelar o agendamento das ${horario} em ${formatDataBR(data)}? O slot será liberado.`,
+    txtBtn: 'Sim, cancelar',
+    danger: true,
+    onConfirm: async () => {
+      try {
+        const docHorarioId = `${medicoId}_${data}`;
+        const refHorario = db.collection('horarios').doc(docHorarioId);
+        const refAg = db.collection('agendamentos').doc(agId);
+
+        await db.runTransaction(async (transaction) => {
+          const horarioDoc = await transaction.get(refHorario);
+          if (horarioDoc.exists) {
+            const slots = horarioDoc.data().slots || [];
+            const idx = slots.findIndex(s => s.hora === horario);
+            if (idx !== -1) { slots[idx].ocupado = false; }
+            transaction.update(refHorario, { slots });
+          }
+          transaction.delete(refAg);
+        });
+
+        showToast('Agendamento cancelado e slot liberado.', 'success');
+        carregarAgendamentos();
+      } catch (e) {
+        console.error(e);
+        showToast('Erro ao cancelar agendamento.', 'error');
+      }
+    }
+  });
+}
+
+// ── REMARCAR ──
+let remarcaState = {
+  agId: null, medicoId: null, medicoNome: null,
+  dataAntiga: null, horarioAntigo: null,
+  novaData: null, novoHorario: null
+};
+
+function abrirRemarcar(agId, medicoId, medicoNome, dataAntiga, horarioAntigo) {
+  remarcaState = { agId, medicoId, medicoNome, dataAntiga, horarioAntigo, novaData: null, novoHorario: null };
+  document.getElementById('rem-medico-info').textContent = `Dr(a). ${medicoNome} — Atual: ${formatDataBR(dataAntiga)} às ${horarioAntigo}`;
+
+  const minData = getTodayStr();
+  const remDataEl = document.getElementById('rem-data');
+  remDataEl.min = minData;
+  remDataEl.value = '';
+
+  document.getElementById('rem-horarios-wrap').style.display = 'none';
+  document.getElementById('rem-loading').style.display = 'none';
+  document.getElementById('rem-empty').style.display = 'none';
+  document.getElementById('btn-confirmar-remarca').disabled = true;
+
+  abrirModal('modal-remarcar');
+}
+
+async function carregarHorariosRemarcar() {
+  const data = document.getElementById('rem-data').value;
+  if (!data) return;
+  remarcaState.novaData = data;
+  remarcaState.novoHorario = null;
+  document.getElementById('btn-confirmar-remarca').disabled = true;
+
+  document.getElementById('rem-horarios-wrap').style.display = 'none';
+  document.getElementById('rem-empty').style.display = 'none';
+  document.getElementById('rem-loading').style.display = 'block';
+
+  const docId = `${remarcaState.medicoId}_${data}`;
+  try {
+    const snap = await db.collection('horarios').doc(docId).get();
+    document.getElementById('rem-loading').style.display = 'none';
+
+    if (!snap.exists) {
+      document.getElementById('rem-empty').style.display = 'block';
+      return;
+    }
+
+    const slots = (snap.data().slots || [])
+      .filter(s => !s.ocupado || (data === remarcaState.dataAntiga && s.hora === remarcaState.horarioAntigo))
+      .sort((a,b) => a.hora.localeCompare(b.hora));
+
+    // Só os realmente livres (excluindo o próprio slot atual se mesma data)
+    const livres = (snap.data().slots || [])
+      .filter(s => !s.ocupado)
+      .sort((a,b) => a.hora.localeCompare(b.hora));
+
+    if (livres.length === 0) {
+      document.getElementById('rem-empty').style.display = 'block';
+      return;
+    }
+
+    const grid = document.getElementById('rem-horarios-grid');
+    grid.innerHTML = '';
+    livres.forEach(slot => {
+      const btn = document.createElement('button');
+      btn.className = 'btn-action btn-remarcar';
+      btn.style.cssText = 'border:2px solid var(--border);border-radius:8px;padding:10px 14px;font-size:15px;font-weight:700;background:var(--white);cursor:pointer;transition:all .2s;';
+      btn.textContent = slot.hora;
+      btn.addEventListener('click', () => {
+        grid.querySelectorAll('button').forEach(b => {
+          b.style.background = 'var(--white)'; b.style.color = 'var(--text)'; b.style.borderColor = 'var(--border)';
+        });
+        btn.style.background = 'var(--green)'; btn.style.color = '#fff'; btn.style.borderColor = 'var(--green)';
+        remarcaState.novoHorario = slot.hora;
+        document.getElementById('btn-confirmar-remarca').disabled = false;
+      });
+      grid.appendChild(btn);
+    });
+
+    document.getElementById('rem-horarios-wrap').style.display = 'block';
+  } catch (e) {
+    console.error(e);
+    document.getElementById('rem-loading').style.display = 'none';
+    document.getElementById('rem-empty').style.display = 'block';
+  }
+}
+
+async function confirmarRemarca() {
+  const { agId, medicoId, dataAntiga, horarioAntigo, novaData, novoHorario } = remarcaState;
+  if (!novaData || !novoHorario) { showToast('Selecione data e horário.', 'error'); return; }
+
+  const btnOk = document.getElementById('btn-confirmar-remarca');
+  btnOk.disabled = true; btnOk.textContent = 'Remarcando...';
+
+  const refHorarioAntigo = db.collection('horarios').doc(`${medicoId}_${dataAntiga}`);
+  const refHorarioNovo   = db.collection('horarios').doc(`${medicoId}_${novaData}`);
+  const refAg = db.collection('agendamentos').doc(agId);
+
+  try {
+    await db.runTransaction(async (transaction) => {
+      const [docAntigo, docNovo] = await Promise.all([
+        transaction.get(refHorarioAntigo),
+        transaction.get(refHorarioNovo)
+      ]);
+
+      // Libera slot antigo
+      if (docAntigo.exists) {
+        const slots = docAntigo.data().slots || [];
+        const idx = slots.findIndex(s => s.hora === horarioAntigo);
+        if (idx !== -1) slots[idx].ocupado = false;
+        transaction.update(refHorarioAntigo, { slots });
+      }
+
+      // Ocupa slot novo
+      if (!docNovo.exists) throw new Error('Documento de horários do novo dia não existe.');
+      const slotsNovos = docNovo.data().slots || [];
+      const idxNovo = slotsNovos.findIndex(s => s.hora === novoHorario && !s.ocupado);
+      if (idxNovo === -1) throw new Error('Este horário não está mais disponível.');
+      slotsNovos[idxNovo].ocupado = true;
+      transaction.update(refHorarioNovo, { slots: slotsNovos });
+
+      // Atualiza agendamento
+      transaction.update(refAg, { data: novaData, horario: novoHorario });
+    });
+
+    fecharModal('modal-remarcar');
+    showToast('Agendamento remarcado com sucesso!', 'success');
+    carregarAgendamentos();
+  } catch (e) {
+    console.error(e);
+    btnOk.disabled = false; btnOk.textContent = 'Confirmar remarca';
+    if (e.message.includes('não está mais disponível')) {
+      showToast('Horário indisponível. Escolha outro.', 'error');
+    } else {
+      showToast('Erro ao remarcar. Tente novamente.', 'error');
+    }
+  }
+}
+
+// ══════════════════════════════════════
+// ABA 2 — MÉDICOS
+// ══════════════════════════════════════
+async function carregarMedicos() {
+  const container = document.getElementById('medicos-list-container');
+  container.innerHTML = `<div class="loading-state"><div class="loading-spinner"></div><p>Carregando...</p></div>`;
+
+  try {
+    const snap = await db.collection('medicos').orderBy('nome').get();
+    if (snap.empty) {
+      container.innerHTML = `<div class="empty-state"><div class="empty-icon">🩺</div><p>Nenhum médico cadastrado.</p></div>`;
+      return;
+    }
+    const lista = document.createElement('div');
+    lista.className = 'medicos-list';
+    snap.forEach(doc => {
+      const m = { id: doc.id, ...doc.data() };
+      const row = document.createElement('div');
+      row.className = 'medico-row';
+      row.id = `mrow-${doc.id}`;
+      row.innerHTML = `
+        <div class="medico-avatar-sm">${m.nome.charAt(0).toUpperCase()}</div>
+        <div class="medico-info">
+          <div class="nome">Dr(a). ${m.nome}</div>
+          <div class="espec">${m.especialidade}</div>
+        </div>
+        <span class="badge ${m.ativo ? 'badge-green' : 'badge-gray'}">${m.ativo ? 'Ativo' : 'Inativo'}</span>
+        <div class="medico-actions">
+          <button class="btn-toggle-ativo ${m.ativo ? 'ativo' : 'inativo'}" onclick="toggleMedicoAtivo('${doc.id}', ${m.ativo})">
+            ${m.ativo ? 'Desativar' : 'Ativar'}
+          </button>
+          <button class="btn-danger" onclick="excluirMedico('${doc.id}', '${m.nome.replace(/'/g,"\'")}')">Excluir</button>
+        </div>
+      `;
+      lista.appendChild(row);
+    });
+    container.innerHTML = '';
+    container.appendChild(lista);
+  } catch (e) {
+    console.error(e);
+    container.innerHTML = `<div class="empty-state"><div class="empty-icon">⚠️</div><p>Erro ao carregar médicos.</p></div>`;
+  }
+}
+
+async function toggleMedicoAtivo(id, ativo) {
+  try {
+    await db.collection('medicos').doc(id).update({ ativo: !ativo });
+    showToast(`Médico ${!ativo ? 'ativado' : 'desativado'} com sucesso.`, 'success');
+    carregarMedicos();
+  } catch (e) {
+    console.error(e);
+    showToast('Erro ao atualizar status.', 'error');
+  }
+}
+
+function excluirMedico(id, nome) {
+  confirmarAcao({
+    icon: '🗑️',
+    titulo: 'Excluir médico',
+    msg: `Deseja excluir Dr(a). ${nome}? Esta ação é irreversível.`,
+    txtBtn: 'Excluir',
+    danger: true,
+    onConfirm: async () => {
+      try {
+        await db.collection('medicos').doc(id).delete();
+        showToast('Médico excluído com sucesso.', 'success');
+        carregarMedicos();
+      } catch (e) {
+        console.error(e);
+        showToast('Erro ao excluir médico.', 'error');
+      }
+    }
+  });
+}
+
+async function adicionarMedico() {
+  const nome  = document.getElementById('nm-nome').value.trim();
+  const espec = document.getElementById('nm-espec').value.trim();
+  if (!nome || !espec) { showToast('Preencha nome e especialidade.', 'error'); return; }
+
+  try {
+    await db.collection('medicos').add({ nome, especialidade: espec, ativo: true });
+    showToast('Médico adicionado!', 'success');
+    document.getElementById('nm-nome').value = '';
+    document.getElementById('nm-espec').value = '';
+    carregarMedicos();
+  } catch (e) {
+    console.error(e);
+    showToast('Erro ao adicionar médico.', 'error');
+  }
+}
+
+// ══════════════════════════════════════
+// ABA 3 — HORÁRIOS
+// ══════════════════════════════════════
+
+// Estado local dos slots (para edição otimista)
+let slotsAtual = [];
+let docHorarioAtualId = null;
+
+async function iniciarAbaHorarios() {
+  const select = document.getElementById('hor-medico');
+  select.innerHTML = '<option value="">Selecione um médico</option>';
+  try {
+    const snap = await db.collection('medicos').where('ativo','==',true).orderBy('nome').get();
+    snap.forEach(doc => {
+      const opt = document.createElement('option');
+      opt.value = doc.id;
+      opt.textContent = `Dr(a). ${doc.data().nome}`;
+      select.appendChild(opt);
+    });
+  } catch (e) {
+    console.error(e);
+  }
+  document.getElementById('slots-container').style.display = 'none';
+  document.getElementById('slots-empty').style.display = 'block';
+  document.getElementById('slots-loading').style.display = 'none';
+}
+
+async function carregarSlotsAdmin() {
+  const medicoId = document.getElementById('hor-medico').value;
+  const data     = document.getElementById('hor-data').value;
+
+  if (!medicoId || !data) {
+    document.getElementById('slots-container').style.display = 'none';
+    document.getElementById('slots-empty').style.display = 'block';
+    return;
+  }
+
+  document.getElementById('slots-container').style.display = 'none';
+  document.getElementById('slots-empty').style.display = 'none';
+  document.getElementById('slots-loading').style.display = 'block';
+
+  docHorarioAtualId = `${medicoId}_${data}`;
+
+  try {
+    const snap = await db.collection('horarios').doc(docHorarioAtualId).get();
+    if (snap.exists) {
+      slotsAtual = snap.data().slots || [];
+    } else {
+      slotsAtual = [];
+    }
+    document.getElementById('slots-loading').style.display = 'none';
+    document.getElementById('slots-container').style.display = 'block';
+    renderSlots();
+  } catch (e) {
+    console.error(e);
+    document.getElementById('slots-loading').style.display = 'none';
+    showToast('Erro ao carregar slots.', 'error');
+  }
+}
+
+function renderSlots() {
+  const lista = document.getElementById('slots-list');
+  if (slotsAtual.length === 0) {
+    lista.innerHTML = `<div style="font-size:14px;color:var(--gray);padding:10px 0;">Nenhum slot cadastrado para este dia.</div>`;
+    return;
+  }
+  const sorted = [...slotsAtual].sort((a,b) => a.hora.localeCompare(b.hora));
+  lista.innerHTML = '';
+  sorted.forEach(slot => {
+    const item = document.createElement('div');
+    item.className = `slot-item ${slot.ocupado ? 'ocupado' : 'livre'}`;
+    if (slot.ocupado) {
+      item.innerHTML = `
+        <span>${slot.hora}</span>
+        <span class="slot-ocupado-label">ocupado</span>
+      `;
+    } else {
+      item.innerHTML = `
+        <span>${slot.hora}</span>
+        <button class="slot-remove" title="Remover slot" onclick="removerSlot('${slot.hora}')">×</button>
+      `;
+    }
+    lista.appendChild(item);
+  });
+}
+
+async function salvarSlots() {
+  const medicoId = document.getElementById('hor-medico').value;
+  const data     = document.getElementById('hor-data').value;
+  if (!medicoId || !data) return;
+
+  try {
+    await db.collection('horarios').doc(docHorarioAtualId).set({
+      medicoId,
+      data,
+      slots: slotsAtual
+    });
+  } catch (e) {
+    console.error(e);
+    showToast('Erro ao salvar slots.', 'error');
+    throw e;
+  }
+}
+
+function removerSlot(hora) {
+  const slot = slotsAtual.find(s => s.hora === hora);
+  if (!slot) return;
+  if (slot.ocupado) { showToast('Este slot está ocupado e não pode ser removido.', 'error'); return; }
+
+  confirmarAcao({
+    icon: '🗑️',
+    titulo: 'Remover slot',
+    msg: `Deseja remover o slot das ${hora}?`,
+    txtBtn: 'Remover',
+    danger: true,
+    onConfirm: async () => {
+      slotsAtual = slotsAtual.filter(s => s.hora !== hora);
+      try {
+        await salvarSlots();
+        renderSlots();
+        showToast('Slot removido.', 'success');
+      } catch (e) {
+        // Reverte
+        await carregarSlotsAdmin();
+      }
+    }
+  });
+}
+
+async function adicionarSlotManual() {
+  const hora = document.getElementById('add-slot-hora').value;
+  if (!hora) { showToast('Informe um horário.', 'error'); return; }
+
+  const jaExiste = slotsAtual.some(s => s.hora === hora);
+  if (jaExiste) { showToast('Este horário já existe.', 'error'); return; }
+
+  const medicoId = document.getElementById('hor-medico').value;
+  const data     = document.getElementById('hor-data').value;
+  if (!medicoId || !data) { showToast('Selecione médico e data primeiro.', 'error'); return; }
+
+  slotsAtual.push({ hora, ocupado: false });
+  try {
+    await salvarSlots();
+    document.getElementById('add-slot-hora').value = '';
+    renderSlots();
+    showToast('Slot adicionado!', 'success');
+  } catch (e) {
+    slotsAtual = slotsAtual.filter(s => s.hora !== hora);
+  }
+}
+
+async function gerarLote() {
+  const inicio     = document.getElementById('batch-inicio').value;
+  const fim        = document.getElementById('batch-fim').value;
+  const intervalo  = parseInt(document.getElementById('batch-intervalo').value, 10);
+  const medicoId   = document.getElementById('hor-medico').value;
+  const data       = document.getElementById('hor-data').value;
+
+  if (!medicoId || !data) { showToast('Selecione médico e data primeiro.', 'error'); return; }
+  if (!inicio || !fim)     { showToast('Informe hora inicial e final.', 'error'); return; }
+  if (!intervalo || intervalo < 5) { showToast('Intervalo mínimo: 5 minutos.', 'error'); return; }
+
+  const minInicio = horaParaMinutos(inicio);
+  const minFim    = horaParaMinutos(fim);
+  if (minInicio >= minFim) { showToast('Hora final deve ser maior que a inicial.', 'error'); return; }
+
+  const novosSlots = [];
+  for (let m = minInicio; m < minFim; m += intervalo) {
+    const hora = minutosParaHora(m);
+    if (!slotsAtual.some(s => s.hora === hora)) {
+      novosSlots.push({ hora, ocupado: false });
+    }
+  }
+
+  if (novosSlots.length === 0) { showToast('Todos os horários do lote já existem.', 'error'); return; }
+
+  slotsAtual = [...slotsAtual, ...novosSlots];
+  try {
+    await salvarSlots();
+    renderSlots();
+    showToast(`${novosSlots.length} slot(s) gerado(s) com sucesso!`, 'success');
+  } catch (e) {
+    await carregarSlotsAdmin();
+  }
+}
+</script>
+</body>
+</html>

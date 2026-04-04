@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agendar Consulta — DS VET Clínica Veterinária</title>
+  <meta name="description" content="Agende sua consulta veterinária na DS VET, Guará II, Brasília. Rápido, fácil e online." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:       #1B6E3A;
+      --green-dark:  #124D28;
+      --green-light: #E8F5EE;
+      --orange:      #F05A28;
+      --orange-dark: #D44A1A;
+      --white:       #FFFFFF;
+      --gray-light:  #F7F8FA;
+      --gray:        #6B7280;
+      --text:        #1A1A1A;
+      --border:      #E5E7EB;
+      --radius:      14px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--gray-light); min-height: 100vh; }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--green-dark);
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+    .logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -.5px; text-decoration: none; }
+    .logo span { color: #7FD9A2; }
+    .back-link {
+      color: rgba(255,255,255,.8);
+      text-decoration: none; font-size: 14px; font-weight: 500;
+      display: flex; align-items: center; gap: 6px;
+      transition: color .2s;
+    }
+    .back-link:hover { color: #fff; }
+
+    /* ── MAIN WRAPPER ── */
+    .page-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    /* ── PAGE TITLE ── */
+    .page-title {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .page-title h1 {
+      font-size: 26px; font-weight: 800; color: var(--green-dark);
+      margin-bottom: 6px;
+    }
+    .page-title p { font-size: 15px; color: var(--gray); }
+
+    /* ── PROGRESS INDICATOR ── */
+    .progress-wrap {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; margin-bottom: 36px;
+    }
+    .step-dot {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      position: relative;
+    }
+    .step-dot .dot {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700;
+      background: var(--white); border: 2px solid var(--border);
+      color: var(--gray); transition: all .3s;
+    }
+    .step-dot .dot-label {
+      font-size: 10px; font-weight: 600; color: var(--gray);
+      white-space: nowrap; transition: color .3s;
+    }
+    .step-dot.active .dot {
+      background: var(--green); border-color: var(--green); color: #fff;
+      box-shadow: 0 0 0 4px rgba(27,110,58,.18);
+    }
+    .step-dot.active .dot-label { color: var(--green); }
+    .step-dot.done .dot {
+      background: var(--green-light); border-color: var(--green); color: var(--green);
+    }
+    .step-dot.done .dot-label { color: var(--green); }
+    .step-connector {
+      width: 32px; height: 2px; background: var(--border);
+      margin-bottom: 22px; flex-shrink: 0; transition: background .3s;
+    }
+    .step-connector.done { background: var(--green); }
+
+    @media (max-width: 480px) {
+      .step-connector { width: 16px; }
+      .step-dot .dot-label { font-size: 9px; }
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 28px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    }
+    .card-title {
+      font-size: 18px; font-weight: 800; color: var(--green-dark);
+      margin-bottom: 6px;
+    }
+    .card-sub {
+      font-size: 14px; color: var(--gray);
+      margin-bottom: 24px; line-height: 1.5;
+    }
+
+    /* ── ETAPA 1 — MÉDICOS ── */
+    .medico-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .medico-card {
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 18px;
+      cursor: pointer;
+      transition: all .2s;
+      background: var(--white);
+    }
+    .medico-card:hover {
+      border-color: var(--green);
+      background: var(--green-light);
+      transform: translateY(-2px);
+    }
+    .medico-card.selected {
+      border-color: var(--green);
+      background: var(--green-light);
+      box-shadow: 0 0 0 3px rgba(27,110,58,.15);
+    }
+    .medico-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--green); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 800; margin-bottom: 12px;
+    }
+    .medico-nome { font-size: 15px; font-weight: 700; margin-bottom: 4px; color: var(--text); }
+    .medico-espec { font-size: 13px; color: var(--gray); }
+
+    /* ── ETAPA 2 — DATAS ── */
+    .datas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 10px;
+    }
+    .data-btn {
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 10px;
+      cursor: pointer;
+      background: var(--white);
+      text-align: center;
+      transition: all .2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .data-btn:hover { border-color: var(--green); background: var(--green-light); }
+    .data-btn.selected {
+      border-color: var(--green); background: var(--green-light);
+      box-shadow: 0 0 0 3px rgba(27,110,58,.15);
+    }
+    .data-dia { font-size: 22px; font-weight: 800; color: var(--green-dark); }
+    .data-mes { font-size: 12px; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: .5px; }
+    .data-sem { font-size: 11px; color: var(--gray); margin-top: 2px; }
+
+    /* ── ETAPA 3 — HORÁRIOS ── */
+    .horarios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 10px;
+    }
+    .horario-btn {
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 8px;
+      cursor: pointer;
+      background: var(--white);
+      text-align: center;
+      font-size: 16px; font-weight: 700;
+      color: var(--text);
+      transition: all .2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .horario-btn:hover { border-color: var(--green); background: var(--green-light); }
+    .horario-btn.selected {
+      border-color: var(--green); background: var(--green);
+      color: #fff;
+      box-shadow: 0 0 0 3px rgba(27,110,58,.15);
+    }
+
+    /* ── ETAPA 4 — FORMULÁRIO ── */
+    .form-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 13px; font-weight: 600; color: var(--text); }
+    .form-group input,
+    .form-group select {
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 15px; font-family: 'Inter', sans-serif;
+      color: var(--text); background: var(--white);
+      transition: border-color .2s;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none; border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(27,110,58,.12);
+    }
+    .form-group input.error,
+    .form-group select.error { border-color: #EF4444; }
+    .form-group .error-msg { font-size: 12px; color: #EF4444; display: none; }
+    .form-group .error-msg.show { display: block; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+
+    /* ── ETAPA 5 — RESUMO ── */
+    .resumo-list {
+      display: flex; flex-direction: column; gap: 14px;
+      margin-bottom: 28px;
+    }
+    .resumo-item {
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .resumo-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: var(--green-light); color: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .resumo-label { font-size: 12px; color: var(--gray); font-weight: 500; margin-bottom: 2px; }
+    .resumo-value { font-size: 15px; font-weight: 700; color: var(--text); }
+
+    /* ── SUCESSO ── */
+    #step-sucesso {
+      text-align: center;
+      padding: 8px 0;
+    }
+    .sucesso-icon {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: var(--green-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 38px; margin: 0 auto 20px;
+    }
+    #step-sucesso h2 { font-size: 22px; font-weight: 800; color: var(--green-dark); margin-bottom: 8px; }
+    #step-sucesso p { font-size: 15px; color: var(--gray); margin-bottom: 28px; line-height: 1.6; }
+    .sucesso-resumo {
+      background: var(--green-light);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 28px;
+      text-align: left;
+    }
+    .sucesso-resumo-linha {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(27,110,58,.12);
+      font-size: 14px;
+    }
+    .sucesso-resumo-linha:last-child { border-bottom: none; }
+    .sucesso-resumo-linha .sr-label { color: var(--gray); }
+    .sucesso-resumo-linha .sr-value { font-weight: 700; color: var(--green-dark); }
+
+    /* ── NAVEGAÇÃO / BOTÕES ── */
+    .nav-btns {
+      display: flex; gap: 12px; margin-top: 28px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      flex: 1; padding: 14px 24px;
+      background: var(--green); color: #fff;
+      border: none; border-radius: 10px;
+      font-size: 15px; font-weight: 700; font-family: 'Inter', sans-serif;
+      cursor: pointer; transition: background .2s, transform .15s;
+      min-height: 48px;
+    }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-primary:disabled { background: var(--gray); cursor: not-allowed; transform: none; }
+    .btn-secondary {
+      padding: 14px 20px;
+      background: transparent; color: var(--gray);
+      border: 1.5px solid var(--border); border-radius: 10px;
+      font-size: 15px; font-weight: 600; font-family: 'Inter', sans-serif;
+      cursor: pointer; transition: all .2s;
+      min-height: 48px;
+    }
+    .btn-secondary:hover { border-color: var(--green); color: var(--green); }
+    .btn-wpp-sucesso {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: #25D366; color: #fff;
+      border: none; border-radius: 10px;
+      padding: 14px 24px;
+      font-size: 15px; font-weight: 700; font-family: 'Inter', sans-serif;
+      cursor: pointer; text-decoration: none;
+      transition: background .2s; width: 100%;
+      margin-bottom: 12px;
+    }
+    .btn-wpp-sucesso:hover { background: #1DA851; }
+    .btn-reiniciar {
+      display: block; width: 100%;
+      padding: 14px;
+      background: transparent; color: var(--green);
+      border: 1.5px solid var(--green); border-radius: 10px;
+      font-size: 15px; font-weight: 600; font-family: 'Inter', sans-serif;
+      cursor: pointer; transition: all .2s; text-align: center;
+    }
+    .btn-reiniciar:hover { background: var(--green-light); }
+
+    /* ── ESTADOS DE LOADING / EMPTY ── */
+    .loading-state, .empty-state, .error-state {
+      text-align: center; padding: 40px 20px;
+    }
+    .loading-spinner {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 3px solid var(--green-light);
+      border-top-color: var(--green);
+      animation: spin .8s linear infinite;
+      margin: 0 auto 14px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-state p, .empty-state p, .error-state p {
+      font-size: 14px; color: var(--gray);
+    }
+    .empty-state .empty-icon, .error-state .error-icon { font-size: 40px; margin-bottom: 10px; }
+
+    /* ── TOAST ── */
+    #toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      background: #1A1A1A; color: #fff;
+      padding: 12px 22px; border-radius: 50px;
+      font-size: 14px; font-weight: 500;
+      box-shadow: 0 4px 20px rgba(0,0,0,.25);
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s;
+      z-index: 999; white-space: nowrap;
+    }
+    #toast.show { opacity: 1; }
+    #toast.error { background: #EF4444; }
+    #toast.success { background: var(--green); }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      text-align: center; margin-top: 40px;
+      font-size: 13px; color: var(--gray); line-height: 1.6;
+    }
+    .page-footer a { color: var(--green); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo">DS <span>VET</span></a>
+  <a href="index.html" class="back-link">
+    ← Voltar ao site
+  </a>
+</header>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- MAIN -->
+<div class="page-wrap">
+
+  <!-- TÍTULO -->
+  <div class="page-title">
+    <h1>Agendar Consulta</h1>
+    <p>Escolha o veterinário, data e horário. Rápido e fácil!</p>
+  </div>
+
+  <!-- INDICADOR DE PROGRESSO -->
+  <div class="progress-wrap" id="progress-wrap">
+    <div class="step-dot active" id="sdot-1">
+      <div class="dot">1</div>
+      <div class="dot-label">Veterinário</div>
+    </div>
+    <div class="step-connector" id="sc-1"></div>
+    <div class="step-dot" id="sdot-2">
+      <div class="dot">2</div>
+      <div class="dot-label">Data</div>
+    </div>
+    <div class="step-connector" id="sc-2"></div>
+    <div class="step-dot" id="sdot-3">
+      <div class="dot">3</div>
+      <div class="dot-label">Horário</div>
+    </div>
+    <div class="step-connector" id="sc-3"></div>
+    <div class="step-dot" id="sdot-4">
+      <div class="dot">4</div>
+      <div class="dot-label">Seus dados</div>
+    </div>
+    <div class="step-connector" id="sc-4"></div>
+    <div class="step-dot" id="sdot-5">
+      <div class="dot">5</div>
+      <div class="dot-label">Confirmar</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       ETAPA 1 — ESCOLHA O VETERINÁRIO
+  ══════════════════════════════════════ -->
+  <div id="step-1" class="card">
+    <div class="card-title">Escolha o veterinário</div>
+    <div class="card-sub">Selecione o profissional para a consulta do seu pet.</div>
+    <div id="medicos-container">
+      <div class="loading-state">
+        <div class="loading-spinner"></div>
+        <p>Carregando veterinários...</p>
+      </div>
+    </div>
+    <div class="nav-btns" style="margin-top:24px;">
+      <button class="btn-primary" id="btn-step1-next" disabled onclick="goToStep2()">
+        Próximo →
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       ETAPA 2 — ESCOLHA A DATA
+  ══════════════════════════════════════ -->
+  <div id="step-2" class="card" style="display:none;">
+    <div class="card-title">Escolha a data</div>
+    <div class="card-sub" id="step2-sub">Selecione um dia disponível.</div>
+    <div id="datas-container">
+      <div class="loading-state">
+        <div class="loading-spinner"></div>
+        <p>Carregando datas disponíveis...</p>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-secondary" onclick="goToStep(1)">← Voltar</button>
+      <button class="btn-primary" id="btn-step2-next" disabled onclick="goToStep3()">
+        Próximo →
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       ETAPA 3 — ESCOLHA O HORÁRIO
+  ══════════════════════════════════════ -->
+  <div id="step-3" class="card" style="display:none;">
+    <div class="card-title">Escolha o horário</div>
+    <div class="card-sub" id="step3-sub">Selecione um horário disponível.</div>
+    <div id="horarios-container">
+      <div class="loading-state">
+        <div class="loading-spinner"></div>
+        <p>Carregando horários...</p>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-secondary" onclick="goToStep(2)">← Voltar</button>
+      <button class="btn-primary" id="btn-step3-next" disabled onclick="goToStep4()">
+        Próximo →
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       ETAPA 4 — SEUS DADOS
+  ══════════════════════════════════════ -->
+  <div id="step-4" class="card" style="display:none;">
+    <div class="card-title">Seus dados</div>
+    <div class="card-sub">Preencha as informações para confirmar o agendamento.</div>
+    <form id="form-dados" onsubmit="return false;">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="inp-nome">Nome do tutor *</label>
+          <input type="text" id="inp-nome" placeholder="Seu nome completo" autocomplete="name" />
+          <span class="error-msg" id="err-nome">Por favor, informe seu nome.</span>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="inp-pet">Nome do pet *</label>
+            <input type="text" id="inp-pet" placeholder="Ex: Rex" />
+            <span class="error-msg" id="err-pet">Informe o nome do pet.</span>
+          </div>
+          <div class="form-group">
+            <label for="inp-especie">Espécie *</label>
+            <select id="inp-especie">
+              <option value="">Selecione</option>
+              <option value="cão">Cão</option>
+              <option value="gato">Gato</option>
+            </select>
+            <span class="error-msg" id="err-especie">Selecione a espécie.</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inp-tel">Telefone / WhatsApp *</label>
+          <input type="tel" id="inp-tel" placeholder="(61) 99999-9999" autocomplete="tel" />
+          <span class="error-msg" id="err-tel">Informe um telefone válido.</span>
+        </div>
+        <div class="form-group">
+          <label for="inp-motivo">Motivo da consulta *</label>
+          <select id="inp-motivo">
+            <option value="">Selecione o motivo</option>
+            <option value="consulta rotina">Consulta de Rotina</option>
+            <option value="vacina">Vacinação</option>
+            <option value="retorno">Retorno</option>
+            <option value="emergência">Emergência</option>
+          </select>
+          <span class="error-msg" id="err-motivo">Selecione o motivo da consulta.</span>
+        </div>
+      </div>
+    </form>
+    <div class="nav-btns">
+      <button class="btn-secondary" onclick="goToStep(3)">← Voltar</button>
+      <button class="btn-primary" onclick="goToStep5()">Revisar agendamento →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       ETAPA 5 — CONFIRMAÇÃO
+  ══════════════════════════════════════ -->
+  <div id="step-5" class="card" style="display:none;">
+    <div class="card-title">Confirmar agendamento</div>
+    <div class="card-sub">Revise os dados e confirme sua consulta.</div>
+    <div class="resumo-list" id="resumo-list">
+      <!-- preenchido via JS -->
+    </div>
+    <div class="nav-btns">
+      <button class="btn-secondary" onclick="goToStep(4)">← Editar</button>
+      <button class="btn-primary" id="btn-confirmar" onclick="confirmarAgendamento()">
+        Confirmar agendamento ✓
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SUCESSO
+  ══════════════════════════════════════ -->
+  <div id="step-sucesso" class="card" style="display:none;">
+    <div class="sucesso-icon">🎉</div>
+    <h2>Consulta agendada!</h2>
+    <p>Seu agendamento foi confirmado com sucesso.<br>Aguardamos você na DS VET!</p>
+    <div class="sucesso-resumo" id="sucesso-resumo">
+      <!-- preenchido via JS -->
+    </div>
+    <a id="btn-wpp" href="#" target="_blank" rel="noopener" class="btn-wpp-sucesso">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.99L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52ZM12 22c-1.85 0-3.66-.5-5.24-1.44l-.37-.22-3.89 1.02 1.04-3.79-.24-.38A9.93 9.93 0 0 1 2 12C2 6.48 6.48 2 12 2c2.67 0 5.18 1.04 7.07 2.93A9.93 9.93 0 0 1 22 12c0 5.52-4.48 10-10 10Zm5.44-7.49c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.15 8.15 0 0 1-2.4-1.48 9.04 9.04 0 0 1-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.01-1.04 2.46s1.06 2.86 1.21 3.06c.15.2 2.09 3.19 5.07 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35Z" fill="white"/>
+      </svg>
+      Enviar confirmação pelo WhatsApp
+    </a>
+    <button class="btn-reiniciar" onclick="reiniciar()">Fazer outro agendamento</button>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="page-footer">
+    DS VET — QE 40 Conjunto K, Loja 12, Guará II, Brasília<br>
+    <a href="tel:+5561993939232">(61) 99393-9232</a> &nbsp;·&nbsp;
+    <a href="https://wa.me/5561993939232" target="_blank">WhatsApp</a>
+  </div>
+
+</div><!-- /page-wrap -->
+
+<!-- ── FIREBASE SDKs ── -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<script>
+// ══════════════════════════════════════
+// FIREBASE CONFIG — SUBSTITUA PELOS SEUS DADOS
+// ══════════════════════════════════════
+const firebaseConfig = {
+  apiKey:            "COLE_SUA_API_KEY",
+  authDomain:        "SEU_PROJETO.firebaseapp.com",
+  projectId:         "SEU_PROJETO_ID",
+  storageBucket:     "SEU_PROJETO.appspot.com",
+  messagingSenderId: "SEU_SENDER_ID",
+  appId:             "SEU_APP_ID"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// ══════════════════════════════════════
+// ESTADO GLOBAL
+// ══════════════════════════════════════
+const state = {
+  currentStep: 1,
+  medico: null,      // { id, nome, especialidade }
+  data: null,        // string YYYY-MM-DD
+  horario: null,     // string HH:MM
+  nome: '',
+  pet: '',
+  especie: '',
+  tel: '',
+  motivo: ''
+};
+
+// ══════════════════════════════════════
+// UTILITÁRIOS
+// ══════════════════════════════════════
+function showToast(msg, type = '') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'show' + (type ? ' ' + type : '');
+  setTimeout(() => { t.className = ''; }, 3200);
+}
+
+function formatDataBR(dateStr) {
+  // dateStr: YYYY-MM-DD
+  const [y, m, d] = dateStr.split('-');
+  return `${d}/${m}/${y}`;
+}
+
+function formatDataPorExtenso(dateStr) {
+  const meses = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  const dias  = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  const [y, m, d] = dateStr.split('-').map(Number);
+  const dt = new Date(y, m - 1, d);
+  return {
+    dia: String(d).padStart(2,'0'),
+    mes: meses[m - 1],
+    sem: dias[dt.getDay()]
+  };
+}
+
+function getTodayStr() {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+function capitalizarMotivo(m) {
+  const map = {
+    'consulta rotina': 'Consulta de Rotina',
+    'vacina': 'Vacinação',
+    'retorno': 'Retorno',
+    'emergência': 'Emergência'
+  };
+  return map[m] || m;
+}
+
+// ══════════════════════════════════════
+// PROGRESSO
+// ══════════════════════════════════════
+function updateProgress(step) {
+  for (let i = 1; i <= 5; i++) {
+    const dot = document.getElementById(`sdot-${i}`);
+    dot.className = 'step-dot';
+    if (i < step) dot.classList.add('done');
+    else if (i === step) dot.classList.add('active');
+  }
+  for (let i = 1; i <= 4; i++) {
+    const conn = document.getElementById(`sc-${i}`);
+    conn.className = 'step-connector' + (i < step ? ' done' : '');
+  }
+}
+
+// ══════════════════════════════════════
+// NAVEGAÇÃO ENTRE ETAPAS
+// ══════════════════════════════════════
+function showStep(n) {
+  const stepIds = ['step-1','step-2','step-3','step-4','step-5','step-sucesso'];
+  stepIds.forEach(id => { document.getElementById(id).style.display = 'none'; });
+  if (n === 'sucesso') {
+    document.getElementById('step-sucesso').style.display = 'block';
+    document.getElementById('progress-wrap').style.display = 'none';
+  } else {
+    document.getElementById(`step-${n}`).style.display = 'block';
+    document.getElementById('progress-wrap').style.display = 'flex';
+    updateProgress(n);
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goToStep(n) {
+  state.currentStep = n;
+  showStep(n);
+}
+
+// ══════════════════════════════════════
+// ETAPA 1 — CARREGAR MÉDICOS
+// ══════════════════════════════════════
+async function carregarMedicos() {
+  const container = document.getElementById('medicos-container');
+  try {
+    const snap = await db.collection('medicos').where('ativo', '==', true).get();
+    if (snap.empty) {
+      container.innerHTML = `<div class="empty-state"><div class="empty-icon">🩺</div><p>Nenhum veterinário disponível no momento.<br>Entre em contato pelo WhatsApp.</p></div>`;
+      return;
+    }
+    const medicos = [];
+    snap.forEach(doc => medicos.push({ id: doc.id, ...doc.data() }));
+
+    const grid = document.createElement('div');
+    grid.className = 'medico-grid';
+    medicos.forEach(m => {
+      const card = document.createElement('div');
+      card.className = 'medico-card';
+      card.dataset.id = m.id;
+      card.innerHTML = `
+        <div class="medico-avatar">${m.nome.charAt(0).toUpperCase()}</div>
+        <div class="medico-nome">Dr(a). ${m.nome}</div>
+        <div class="medico-espec">${m.especialidade}</div>
+      `;
+      card.addEventListener('click', () => selecionarMedico(m, card));
+      grid.appendChild(card);
+    });
+    container.innerHTML = '';
+    container.appendChild(grid);
+  } catch (e) {
+    console.error(e);
+    container.innerHTML = `<div class="error-state"><div class="error-icon">⚠️</div><p>Erro ao carregar veterinários. Verifique a conexão.</p></div>`;
+  }
+}
+
+function selecionarMedico(medico, cardEl) {
+  document.querySelectorAll('.medico-card').forEach(c => c.classList.remove('selected'));
+  cardEl.classList.add('selected');
+  state.medico = medico;
+  document.getElementById('btn-step1-next').disabled = false;
+}
+
+function goToStep2() {
+  if (!state.medico) { showToast('Selecione um veterinário.', 'error'); return; }
+  goToStep(2);
+  carregarDatas();
+}
+
+// ══════════════════════════════════════
+// ETAPA 2 — CARREGAR DATAS
+// ══════════════════════════════════════
+async function carregarDatas() {
+  const container = document.getElementById('datas-container');
+  const sub = document.getElementById('step2-sub');
+  sub.textContent = `Datas disponíveis para Dr(a). ${state.medico.nome}`;
+  container.innerHTML = `<div class="loading-state"><div class="loading-spinner"></div><p>Carregando datas...</p></div>`;
+  document.getElementById('btn-step2-next').disabled = true;
+  state.data = null;
+
+  const hoje = getTodayStr();
+  try {
+    const snap = await db.collection('horarios')
+      .where('medicoId', '==', state.medico.id)
+      .where('data', '>=', hoje)
+      .get();
+
+    // Filtra docs com ao menos 1 slot livre
+    const datas = [];
+    snap.forEach(doc => {
+      const d = doc.data();
+      const temLivre = d.slots && d.slots.some(s => !s.ocupado);
+      if (temLivre) datas.push(d.data);
+    });
+    datas.sort();
+
+    if (datas.length === 0) {
+      container.innerHTML = `<div class="empty-state"><div class="empty-icon">📅</div><p>Nenhuma data disponível para este veterinário.<br>Entre em contato pelo WhatsApp.</p></div>`;
+      return;
+    }
+
+    const grid = document.createElement('div');
+    grid.className = 'datas-grid';
+    datas.forEach(dateStr => {
+      const { dia, mes, sem } = formatDataPorExtenso(dateStr);
+      const btn = document.createElement('button');
+      btn.className = 'data-btn';
+      btn.dataset.date = dateStr;
+      btn.innerHTML = `<div class="data-dia">${dia}</div><div class="data-mes">${mes}</div><div class="data-sem">${sem}</div>`;
+      btn.addEventListener('click', () => selecionarData(dateStr, btn));
+      grid.appendChild(btn);
+    });
+    container.innerHTML = '';
+    container.appendChild(grid);
+  } catch (e) {
+    console.error(e);
+    container.innerHTML = `<div class="error-state"><div class="error-icon">⚠️</div><p>Erro ao carregar datas disponíveis.</p></div>`;
+  }
+}
+
+function selecionarData(dateStr, btnEl) {
+  document.querySelectorAll('.data-btn').forEach(b => b.classList.remove('selected'));
+  btnEl.classList.add('selected');
+  state.data = dateStr;
+  document.getElementById('btn-step2-next').disabled = false;
+}
+
+function goToStep3() {
+  if (!state.data) { showToast('Selecione uma data.', 'error'); return; }
+  goToStep(3);
+  carregarHorarios();
+}
+
+// ══════════════════════════════════════
+// ETAPA 3 — CARREGAR HORÁRIOS
+// ══════════════════════════════════════
+async function carregarHorarios() {
+  const container = document.getElementById('horarios-container');
+  const sub = document.getElementById('step3-sub');
+  sub.textContent = `Horários livres em ${formatDataBR(state.data)} — Dr(a). ${state.medico.nome}`;
+  container.innerHTML = `<div class="loading-state"><div class="loading-spinner"></div><p>Carregando horários...</p></div>`;
+  document.getElementById('btn-step3-next').disabled = true;
+  state.horario = null;
+
+  const docId = `${state.medico.id}_${state.data}`;
+  try {
+    const snap = await db.collection('horarios').doc(docId).get();
+    if (!snap.exists) {
+      container.innerHTML = `<div class="empty-state"><div class="empty-icon">🕐</div><p>Nenhum horário encontrado para esta data.</p></div>`;
+      return;
+    }
+    const data = snap.data();
+    const livres = (data.slots || []).filter(s => !s.ocupado).sort((a, b) => a.hora.localeCompare(b.hora));
+
+    if (livres.length === 0) {
+      container.innerHTML = `<div class="empty-state"><div class="empty-icon">🕐</div><p>Não há horários disponíveis nesta data.<br>Escolha outra data.</p></div>`;
+      return;
+    }
+
+    const grid = document.createElement('div');
+    grid.className = 'horarios-grid';
+    livres.forEach(slot => {
+      const btn = document.createElement('button');
+      btn.className = 'horario-btn';
+      btn.textContent = slot.hora;
+      btn.addEventListener('click', () => selecionarHorario(slot.hora, btn));
+      grid.appendChild(btn);
+    });
+    container.innerHTML = '';
+    container.appendChild(grid);
+  } catch (e) {
+    console.error(e);
+    container.innerHTML = `<div class="error-state"><div class="error-icon">⚠️</div><p>Erro ao carregar horários.</p></div>`;
+  }
+}
+
+function selecionarHorario(hora, btnEl) {
+  document.querySelectorAll('.horario-btn').forEach(b => b.classList.remove('selected'));
+  btnEl.classList.add('selected');
+  state.horario = hora;
+  document.getElementById('btn-step3-next').disabled = false;
+}
+
+function goToStep4() {
+  if (!state.horario) { showToast('Selecione um horário.', 'error'); return; }
+  goToStep(4);
+}
+
+// ══════════════════════════════════════
+// ETAPA 4 — VALIDAÇÃO DO FORMULÁRIO
+// ══════════════════════════════════════
+function validarForm() {
+  let ok = true;
+  const nome   = document.getElementById('inp-nome').value.trim();
+  const pet    = document.getElementById('inp-pet').value.trim();
+  const especie = document.getElementById('inp-especie').value;
+  const tel    = document.getElementById('inp-tel').value.trim();
+  const motivo = document.getElementById('inp-motivo').value;
+
+  function setErr(fieldId, errId, show) {
+    document.getElementById(fieldId).classList.toggle('error', show);
+    document.getElementById(errId).classList.toggle('show', show);
+  }
+
+  setErr('inp-nome', 'err-nome', !nome);
+  if (!nome) ok = false;
+
+  setErr('inp-pet', 'err-pet', !pet);
+  if (!pet) ok = false;
+
+  setErr('inp-especie', 'err-especie', !especie);
+  if (!especie) ok = false;
+
+  const telLimpo = tel.replace(/\D/g, '');
+  const telOk = telLimpo.length >= 10;
+  setErr('inp-tel', 'err-tel', !telOk);
+  if (!telOk) ok = false;
+
+  setErr('inp-motivo', 'err-motivo', !motivo);
+  if (!motivo) ok = false;
+
+  if (ok) {
+    state.nome    = nome;
+    state.pet     = pet;
+    state.especie = especie;
+    state.tel     = tel;
+    state.motivo  = motivo;
+  }
+  return ok;
+}
+
+function goToStep5() {
+  if (!validarForm()) { showToast('Preencha todos os campos corretamente.', 'error'); return; }
+  goToStep(5);
+  montarResumo();
+}
+
+// ══════════════════════════════════════
+// ETAPA 5 — RESUMO
+// ══════════════════════════════════════
+function montarResumo() {
+  const lista = document.getElementById('resumo-list');
+  const itens = [
+    { icon: '🩺', label: 'Veterinário', value: `Dr(a). ${state.medico.nome} — ${state.medico.especialidade}` },
+    { icon: '📅', label: 'Data', value: formatDataBR(state.data) },
+    { icon: '🕐', label: 'Horário', value: state.horario },
+    { icon: '👤', label: 'Tutor', value: state.nome },
+    { icon: '🐾', label: 'Pet', value: `${state.pet} (${state.especie})` },
+    { icon: '📱', label: 'Telefone', value: state.tel },
+    { icon: '📋', label: 'Motivo', value: capitalizarMotivo(state.motivo) },
+  ];
+  lista.innerHTML = itens.map(i => `
+    <div class="resumo-item">
+      <div class="resumo-icon">${i.icon}</div>
+      <div>
+        <div class="resumo-label">${i.label}</div>
+        <div class="resumo-value">${i.value}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ══════════════════════════════════════
+// CONFIRMAR AGENDAMENTO — TRANSAÇÃO
+// ══════════════════════════════════════
+async function confirmarAgendamento() {
+  const btn = document.getElementById('btn-confirmar');
+  btn.disabled = true;
+  btn.textContent = 'Confirmando...';
+
+  const docHorarioId = `${state.medico.id}_${state.data}`;
+  const refHorario = db.collection('horarios').doc(docHorarioId);
+  const refAgendamento = db.collection('agendamentos').doc();
+
+  try {
+    await db.runTransaction(async (transaction) => {
+      const horarioDoc = await transaction.get(refHorario);
+      if (!horarioDoc.exists) throw new Error('Documento de horários não encontrado.');
+
+      const slots = horarioDoc.data().slots || [];
+      const idx = slots.findIndex(s => s.hora === state.horario && !s.ocupado);
+      if (idx === -1) throw new Error('Este horário não está mais disponível.');
+
+      slots[idx].ocupado = true;
+      transaction.update(refHorario, { slots });
+
+      transaction.set(refAgendamento, {
+        medicoId:      state.medico.id,
+        medicoNome:    state.medico.nome,
+        data:          state.data,
+        horario:       state.horario,
+        nomeCliente:   state.nome,
+        nomePet:       state.pet,
+        especie:       state.especie,
+        telefone:      state.tel,
+        motivo:        state.motivo,
+        status:        'confirmado',
+        criadoEm:      firebase.firestore.FieldValue.serverTimestamp()
+      });
+    });
+
+    // Sucesso
+    montarSucesso();
+    showStep('sucesso');
+
+  } catch (e) {
+    console.error(e);
+    btn.disabled = false;
+    btn.textContent = 'Confirmar agendamento ✓';
+    if (e.message.includes('não está mais disponível')) {
+      showToast('Este horário acabou de ser reservado. Escolha outro.', 'error');
+      setTimeout(() => goToStep(3), 2000);
+    } else {
+      showToast('Erro ao confirmar. Tente novamente.', 'error');
+    }
+  }
+}
+
+function montarSucesso() {
+  const resumo = document.getElementById('sucesso-resumo');
+  resumo.innerHTML = `
+    <div class="sucesso-resumo-linha"><span class="sr-label">Veterinário</span><span class="sr-value">Dr(a). ${state.medico.nome}</span></div>
+    <div class="sucesso-resumo-linha"><span class="sr-label">Data</span><span class="sr-value">${formatDataBR(state.data)}</span></div>
+    <div class="sucesso-resumo-linha"><span class="sr-label">Horário</span><span class="sr-value">${state.horario}</span></div>
+    <div class="sucesso-resumo-linha"><span class="sr-label">Pet</span><span class="sr-value">${state.pet}</span></div>
+  `;
+
+  const txt = encodeURIComponent(`Olá! Acabei de agendar uma consulta para ${state.pet} com Dr(a). ${state.medico.nome} em ${formatDataBR(state.data)} às ${state.horario}. Meu nome é ${state.nome}.`);
+  document.getElementById('btn-wpp').href = `https://wa.me/5561993939232?text=${txt}`;
+}
+
+// ══════════════════════════════════════
+// REINICIAR
+// ══════════════════════════════════════
+function reiniciar() {
+  state.medico  = null;
+  state.data    = null;
+  state.horario = null;
+  state.nome    = '';
+  state.pet     = '';
+  state.especie = '';
+  state.tel     = '';
+  state.motivo  = '';
+  document.getElementById('inp-nome').value = '';
+  document.getElementById('inp-pet').value = '';
+  document.getElementById('inp-especie').value = '';
+  document.getElementById('inp-tel').value = '';
+  document.getElementById('inp-motivo').value = '';
+  document.getElementById('progress-wrap').style.display = 'flex';
+  showStep(1);
+  carregarMedicos();
+}
+
+// ══════════════════════════════════════
+// MÁSCARA TELEFONE
+// ══════════════════════════════════════
+document.getElementById('inp-tel').addEventListener('input', function() {
+  let v = this.value.replace(/\D/g, '').slice(0, 11);
+  if (v.length <= 10) {
+    v = v.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+  } else {
+    v = v.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+  }
+  this.value = v;
+});
+
+// ══════════════════════════════════════
+// INIT
+// ══════════════════════════════════════
+carregarMedicos();
+</script>
+</body>
+</html>

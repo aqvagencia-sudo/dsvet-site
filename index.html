@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DS VET – Clínica Veterinária | Guará II, Guará, Sudoeste, Asa Sul, Núcleo Bandeirante – Brasília</title>
+  <meta name="description" content="Clínica veterinária no Guará II, Brasília. Atendemos cães e gatos do Guará, Lúcio Costa, Sudoeste, Asa Sul e Núcleo Bandeirante. Consultas, cirurgias, lab. próprio e especialidades. Agende pelo WhatsApp!" />
+  <meta name="keywords" content="clínica veterinária guará, veterinário guará ii, veterinário guará brasília, veterinário sudoeste brasília, veterinário asa sul, veterinário núcleo bandeirante, veterinário lúcio costa, clínica veterinária brasília, DS VET, consulta veterinária guará, cirurgia veterinária brasília, laboratório veterinário guará, cardiologia veterinária brasília, dermatologia veterinária guará, nefrologia veterinária brasília, neurologia veterinária brasília, gastroenterologia veterinária brasília, endocrinologia veterinária, fisioterapia veterinária guará, odontologia veterinária brasília, oftalmologia veterinária guará, nutrição veterinária brasília" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://dsvet.com.br/" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="DS VET – Clínica Veterinária no Guará II, Brasília" />
+  <meta property="og:description" content="Consultas, cirurgias, exames e especialidades para cães e gatos. Atendemos Guará, Sudoeste, Asa Sul e Núcleo Bandeirante. 4.8 ⭐ no Google." />
+  <meta property="og:locale" content="pt_BR" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VeterinaryCare",
+    "name": "DS VET – Clínica Veterinária",
+    "image": "https://dsvet.com.br/logo.png",
+    "url": "https://dsvet.com.br",
+    "telephone": "+55-61-99393-9232",
+    "priceRange": "$$",
+    "description": "Clínica veterinária completa no Guará II, Brasília, atendendo cães e gatos. Consultas, cirurgias, exames de imagem, laboratório próprio e especialidades: cardiologia, dermatologia, endocrinologia e fisioterapia.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "QE 40 Conjunto K, Loja 12",
+      "addressLocality": "Guará II",
+      "addressRegion": "DF",
+      "postalCode": "71070-112",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -15.8193,
+      "longitude": -47.9994
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:30", "closes": "17:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:30", "closes": "13:00" }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "265",
+      "bestRating": "5"
+    },
+    "areaServed": [
+      { "@type": "Place", "name": "Guará II, Brasília - DF" },
+      { "@type": "Place", "name": "Guará, Brasília - DF" },
+      { "@type": "Place", "name": "Lúcio Costa, Guará - DF" },
+      { "@type": "Place", "name": "Sudoeste, Brasília - DF" },
+      { "@type": "Place", "name": "Asa Sul, Brasília - DF" },
+      { "@type": "Place", "name": "Núcleo Bandeirante, DF" }
+    ],
+    "hasMap": "https://maps.google.com/?q=QE+40+Conjunto+K+Loja+12+Guará+II+Brasília",
+    "sameAs": [
+      "https://www.instagram.com/dsveterinaria",
+      "https://www.facebook.com/DSVet"
+    ]
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:      #1B6E3A;
+      --green-dark: #124D28;
+      --green-light:#E8F5EE;
+      --orange:     #F05A28;
+      --orange-dark:#D44A1A;
+      --white:      #FFFFFF;
+      --gray-light: #F7F8FA;
+      --gray:       #6B7280;
+      --text:       #1A1A1A;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+
+    /* ── WHATSAPP FLUTUANTE ── */
+    .wpp-float {
+      position: fixed; bottom: 24px; right: 24px; z-index: 999;
+      display: flex; align-items: center; gap: 10px;
+      background: #25D366; color: #fff;
+      padding: 14px 22px; border-radius: 50px;
+      text-decoration: none; font-weight: 700; font-size: 15px;
+      box-shadow: 0 4px 20px rgba(37,211,102,.45);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .wpp-float:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(37,211,102,.55); }
+    .wpp-float svg { flex-shrink: 0; }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--green-dark);
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -.5px; }
+    .logo span { color: #7FD9A2; }
+    .header-cta {
+      background: var(--orange); color: #fff;
+      padding: 10px 22px; border-radius: 8px;
+      text-decoration: none; font-weight: 700; font-size: 14px;
+      transition: background .2s;
+    }
+    .header-cta:hover { background: var(--orange-dark); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      background: var(--green-dark);
+      color: #fff;
+      padding: 72px 24px 80px;
+      overflow: hidden;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+    }
+    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .28; z-index: 0; pointer-events: none; display: block; }
+    .hero-inner { position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      padding: 6px 16px; border-radius: 50px;
+      font-size: 13px; font-weight: 600; margin-bottom: 24px;
+      letter-spacing: .5px;
+    }
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 52px);
+      font-weight: 900; line-height: 1.15;
+      max-width: 760px; margin: 0 auto 18px;
+    }
+    .hero h1 em { color: #7FD9A2; font-style: normal; }
+    .hero p {
+      font-size: 18px; opacity: .88;
+      max-width: 560px; margin: 0 auto 36px; line-height: 1.6;
+    }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-wpp {
+      display: flex; align-items: center; gap: 10px;
+      background: #25D366; color: #fff;
+      padding: 16px 32px; border-radius: 10px;
+      text-decoration: none; font-weight: 800; font-size: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.25);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-wpp:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.3); }
+    .btn-outline {
+      display: flex; align-items: center; gap: 10px;
+      border: 2px solid rgba(255,255,255,.6); color: #fff;
+      padding: 16px 32px; border-radius: 10px;
+      text-decoration: none; font-weight: 700; font-size: 16px;
+      transition: background .2s, border-color .2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+
+    /* ── SOCIAL PROOF BAR ── */
+    .proof-bar {
+      background: var(--white);
+      border-bottom: 1px solid #E5E7EB;
+      padding: 12px 24px;
+      display: flex; justify-content: center; align-items: center;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .proof-item { display: flex; align-items: center; gap: 10px; }
+    .proof-item .stars { color: #F59E0B; font-size: 20px; letter-spacing: 2px; }
+    .proof-item strong { font-size: 17px; font-weight: 700; }
+    .proof-item span { font-size: 14px; color: var(--gray); }
+    .proof-sep { width: 1px; height: 36px; background: #E5E7EB; }
+
+    /* ── SECTIONS ── */
+    section { padding: 44px 24px; }
+    .container { max-width: 1060px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      background: var(--green-light); color: var(--green);
+      padding: 4px 12px; border-radius: 50px;
+      font-size: 12px; font-weight: 700; margin-bottom: 10px;
+      text-transform: uppercase; letter-spacing: .8px;
+    }
+    h2 {
+      font-size: clamp(22px, 3.5vw, 34px);
+      font-weight: 800; line-height: 1.2; margin-bottom: 10px;
+    }
+    .subtitle {
+      font-size: 17px; color: var(--gray);
+      max-width: 560px; line-height: 1.6; margin-bottom: 28px;
+    }
+
+    /* ── SERVIÇOS ── */
+    .servicos { background: var(--gray-light); }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px 18px;
+      border: 1px solid #E5E7EB;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+    .card-icon { font-size: 32px; margin-bottom: 12px; }
+    .card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .card p { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+    /* ── ESPECIALIDADES ── */
+    .espec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .espec-card {
+      background: var(--green-light);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .espec-card .icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+    .espec-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; color: var(--green-dark); }
+    .espec-card p { font-size: 14px; color: #4B7A5E; line-height: 1.5; }
+
+    /* ── DIFERENCIAIS ── */
+    .dif { background: var(--green-dark); color: #fff; }
+    .dif h2 { color: #fff; }
+    .dif .subtitle { color: rgba(255,255,255,.75); }
+    .dif-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+    }
+    .dif-item {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 10px;
+      padding: 16px 14px;
+      text-align: center;
+    }
+    .dif-item .dif-icon { font-size: 28px; margin-bottom: 8px; }
+    .dif-item h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .dif-item p { font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.5; }
+
+    /* ── DEPOIMENTOS ── */
+    .dep { background: var(--gray-light); padding: 44px 24px 40px; }
+    .dep-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .dep-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 22px 20px;
+      border: 1px solid #E5E7EB;
+      height: auto;
+    }
+    .dep-stars { color: #F59E0B; font-size: 18px; letter-spacing: 2px; margin-bottom: 8px; }
+    .dep-text { font-size: 15px; color: #374151; line-height: 1.65; margin-bottom: 14px; font-style: italic; }
+    .dep-author { font-size: 15px; font-weight: 700; color: var(--green); }
+    .dep-author span { font-weight: 400; color: var(--gray); }
+
+    /* ── CARROSSEL ── */
+    .carousel-wrap { position: relative; display: flex; align-items: stretch; gap: 12px; }
+    .carousel-track-wrap { overflow: hidden; width: 100%; }
+    .carousel-track { display: flex; gap: 20px; transition: transform .4s ease; align-items: stretch; }
+    .carousel-track .dep-card { width: 270px; min-width: 270px; flex-shrink: 0; display: flex; flex-direction: column; }
+    .dep-text { flex: 1; }
+    @media (max-width: 900px) { .carousel-track .dep-card { width: 260px; min-width: 260px; } }
+    @media (max-width: 600px) { .carousel-track .dep-card { width: calc(100vw - 80px); min-width: calc(100vw - 80px); } }
+    .car-btn { background: var(--green); color: #fff; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 18px; cursor: pointer; flex-shrink: 0; transition: background .2s; display: flex; align-items: center; justify-content: center; }
+    .car-btn:hover { background: var(--green-dark); }
+    .car-dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+    .car-dot { width: 8px; height: 8px; border-radius: 50%; background: #D1D5DB; cursor: pointer; transition: background .2s, transform .2s; border: none; }
+    .car-dot.active { background: var(--green); transform: scale(1.3); }
+    .dep-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--green); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink:0; }
+    .dep-avatar-img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid var(--green-light); }
+    .dep-card { display: flex; flex-direction: column; }
+    .dep-photo { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 14px; display: block; }
+    .dep-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .dep-top .dep-avatar { margin-bottom: 0; flex-shrink: 0; }
+
+    /* ── AGENDA / CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, #F05A28 0%, #D44A1A 100%);
+      color: #fff; text-align: center;
+    }
+    .cta-section h2 { color: #fff; margin-bottom: 12px; }
+    .cta-section p { font-size: 17px; opacity: .9; margin-bottom: 36px; }
+    .cta-section .btn-wpp { font-size: 18px; padding: 18px 40px; }
+
+    /* ── LOCALIZAÇÃO ── */
+    .loc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 680px) { .loc-grid { grid-template-columns: 1fr; } }
+    .loc-info h3 { font-size: 20px; font-weight: 700; margin-bottom: 20px; }
+    .loc-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .loc-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.5; }
+    .loc-list li .ico { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .loc-list li strong { display: block; font-weight: 600; }
+    .loc-list li span { color: var(--gray); }
+    .map-wrap { border-radius: 14px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,.1); }
+    .map-wrap iframe { width: 100%; height: 320px; border: 0; display: block; }
+
+    /* ── HERO COM IMAGEM ── */
+    .hero-inner { display: flex; align-items: center; justify-content: center; max-width: 860px; margin: 0 auto; }
+    .hero-text { flex: 1; text-align: center; }
+    .hero h1 { max-width: 100%; }
+    .hero p { margin-left: auto; margin-right: auto; }
+
+    /* ── GALERIA ── */
+    .galeria { background: var(--gray-light); }
+    .galeria-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 640px) { .galeria-grid { grid-template-columns: repeat(2, 1fr); } }
+    .galeria-item { border-radius: 14px; overflow: hidden; aspect-ratio: 1; position: relative; cursor: pointer; }
+    .galeria-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; display: block; }
+    .galeria-item:hover img { transform: scale(1.05); }
+    .galeria-item .caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,.65)); color: #fff; padding: 24px 12px 12px; font-size: 13px; font-weight: 600; opacity: 0; transition: opacity .3s; }
+    .galeria-item:hover .caption { opacity: 1; }
+
+    /* ── EQUIPE BANNER ── */
+    .equipe-banner { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    @media (max-width: 680px) { .equipe-banner { grid-template-columns: 1fr; } }
+    .equipe-banner img { width: 100%; border-radius: 16px; object-fit: cover; height: 300px; box-shadow: 0 8px 32px rgba(0,0,0,.12); }
+
+    /* ── CONTADORES ── */
+    .contadores { background: var(--green); padding: 28px 24px; }
+    .cont-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 24px; max-width: 860px; margin: 0 auto; text-align: center; }
+    .cont-item { color: #fff; }
+    .cont-num { font-size: clamp(36px,5vw,56px); font-weight: 900; line-height: 1; display: block; }
+    .cont-label { font-size: 14px; opacity: .85; margin-top: 6px; font-weight: 500; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ── LIGHTBOX ── */
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.92); z-index: 9999; align-items: center; justify-content: center; padding: 24px; }
+    .lightbox.active { display: flex; }
+    .lightbox img { max-width: 100%; max-height: 90vh; border-radius: 12px; object-fit: contain; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+    .lightbox-close { position: absolute; top: 20px; right: 24px; color: #fff; font-size: 36px; cursor: pointer; line-height: 1; font-weight: 300; }
+    .lightbox-close:hover { color: #7FD9A2; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,.65);
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 13px; line-height: 1.6;
+    }
+    footer strong { color: #fff; }
+    footer a { color: #7FD9A2; text-decoration: none; }
+
+    /* ── MOBILE FIXES ── */
+    @media (max-width: 600px) {
+      /* Header */
+      .header-cta { display: none; }
+      .logo { font-size: 18px; }
+
+      /* Hero */
+      .hero { padding: 36px 16px 40px; }
+      .hero-badge { font-size: 11px; padding: 5px 12px; margin-bottom: 14px; }
+      .hero h1 { font-size: 26px; margin-bottom: 12px; }
+      .hero p { font-size: 15px; margin-bottom: 24px; }
+      .hero-btns { flex-direction: column; align-items: stretch; gap: 10px; }
+      .btn-wpp, .btn-outline { justify-content: center; padding: 14px 20px; font-size: 15px; }
+
+      /* Proof bar */
+      .proof-bar { gap: 12px; padding: 10px 16px; flex-wrap: wrap; justify-content: center; }
+      .proof-sep { display: none; }
+      .proof-item strong { font-size: 14px; }
+      .proof-item span { font-size: 12px; }
+
+      /* Sections */
+      section { padding: 32px 16px; }
+      h2 { font-size: 22px; }
+      .subtitle { font-size: 14px; margin-bottom: 20px; }
+
+      /* Contadores */
+      .contadores { padding: 20px 16px; }
+      .cont-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .cont-num { font-size: 32px; }
+      .cont-label { font-size: 12px; }
+
+      /* Cards serviços */
+      .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .card { padding: 14px 12px; }
+      .card-icon { font-size: 24px; margin-bottom: 8px; }
+      .card h3 { font-size: 13px; }
+      .card p { font-size: 12px; }
+
+      /* Especialidades */
+      .espec-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .espec-card { padding: 12px; gap: 8px; }
+      .espec-card .icon { font-size: 20px; }
+      .espec-card h4 { font-size: 12px; }
+      .espec-card p { font-size: 11px; }
+
+      /* Diferenciais */
+      .dif-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .dif-item { padding: 12px 10px; }
+      .dif-item .dif-icon { font-size: 24px; margin-bottom: 6px; }
+      .dif-item h4 { font-size: 13px; }
+      .dif-item p { font-size: 11px; }
+
+      /* Depoimentos */
+      .dep-grid { grid-template-columns: 1fr; }
+      .dep-card { padding: 16px; }
+
+      /* Equipe */
+      .equipe-banner { grid-template-columns: 1fr; gap: 20px; }
+      .equipe-banner img { height: 220px; }
+
+      /* Galeria */
+      .galeria-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+
+      /* Mapa */
+      .loc-grid { grid-template-columns: 1fr; gap: 24px; }
+      .map-wrap iframe { height: 220px; }
+
+      /* WhatsApp flutuante */
+      .wpp-float { padding: 12px 16px; font-size: 13px; bottom: 16px; right: 16px; }
+
+      /* CTA section */
+      .cta-section { padding: 36px 16px; }
+      .cta-section h2 { font-size: 22px; }
+      .cta-section p { font-size: 14px; margin-bottom: 24px; }
+      .cta-section .btn-wpp { font-size: 15px; padding: 14px 24px; }
+
+      /* Bairros inline */
+      [style*="minmax(260px"] { grid-template-columns: 1fr !important; }
+
+      /* FAQ */
+      details { padding: 14px 16px !important; }
+      summary { font-size: 14px !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── WHATSAPP FLUTUANTE ── -->
+<a class="wpp-float" href="https://wa.me/5561993939232?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20para%20meu%20pet." target="_blank" rel="noopener">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+    <path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.99L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52ZM12 22c-1.85 0-3.66-.5-5.24-1.44l-.37-.22-3.89 1.02 1.04-3.79-.24-.38A9.93 9.93 0 0 1 2 12C2 6.48 6.48 2 12 2c2.67 0 5.18 1.04 7.07 2.93A9.93 9.93 0 0 1 22 12c0 5.52-4.48 10-10 10Zm5.44-7.49c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.15 8.15 0 0 1-2.4-1.48 9.04 9.04 0 0 1-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.01-1.04 2.46s1.06 2.86 1.21 3.06c.15.2 2.09 3.19 5.07 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35Z" fill="white"/>
+  </svg>
+  Falar no WhatsApp
+</a>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="logo">DS <span>VET</span></div>
+  <div style="display:flex;gap:10px;align-items:center;">
+    <a href="blog.html" style="color:#7FD9A2;text-decoration:none;font-size:13px;font-weight:600;">Blog</a>
+    <a class="header-cta" href="agenda.html">Agendar Consulta</a>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline poster="images/hero.jpg">
+    <source src="images/clinica.mp4" type="video/mp4">
+  </video>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">🐾 Clínica Veterinária no Guará II — Brasília</div>
+      <h1>Seu pet merece os <em>melhores cuidados</em> veterinários</h1>
+      <p>Consultas, cirurgias, exames e especialidades para cães e gatos. Diagnóstico rápido com laboratório próprio — tudo no Guará II.</p>
+      <div class="hero-btns">
+        <a class="btn-wpp" href="https://wa.me/5561993939232?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20para%20meu%20pet." target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.99L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52ZM12 22c-1.85 0-3.66-.5-5.24-1.44l-.37-.22-3.89 1.02 1.04-3.79-.24-.38A9.93 9.93 0 0 1 2 12C2 6.48 6.48 2 12 2c2.67 0 5.18 1.04 7.07 2.93A9.93 9.93 0 0 1 22 12c0 5.52-4.48 10-10 10Zm5.44-7.49c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.15 8.15 0 0 1-2.4-1.48 9.04 9.04 0 0 1-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.01-1.04 2.46s1.06 2.86 1.21 3.06c.15.2 2.09 3.19 5.07 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35Z" fill="white"/></svg>
+          Agendar pelo WhatsApp
+        </a>
+        <a class="btn-outline" href="agenda.html">
+          📅 Ver Horários Disponíveis
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOCIAL PROOF BAR ── -->
+<div class="proof-bar">
+  <div class="proof-item">
+    <div class="stars">★★★★★</div>
+    <div>
+      <strong>4.8 / 5.0</strong>
+      <span>265 avaliações no Google</span>
+    </div>
+  </div>
+  <div class="proof-sep"></div>
+  <div class="proof-item">
+    <span style="font-size:24px;">🐾</span>
+    <div>
+      <strong>Cães e Gatos</strong>
+      <span>Atendimento especializado</span>
+    </div>
+  </div>
+  <div class="proof-sep"></div>
+  <div class="proof-item">
+    <span style="font-size:24px;">🔬</span>
+    <div>
+      <strong>Lab. Próprio</strong>
+      <span>Diagnóstico no mesmo dia</span>
+    </div>
+  </div>
+  <div class="proof-sep"></div>
+  <div class="proof-item">
+    <span style="font-size:24px;">📍</span>
+    <div>
+      <strong>Guará II</strong>
+      <span>Estacionamento gratuito</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── CONTADORES ── -->
+<div class="contadores">
+  <div class="cont-grid">
+    <div class="cont-item reveal">
+      <span class="cont-num" data-target="265">0</span>
+      <span class="cont-label">⭐ Avaliações no Google</span>
+    </div>
+    <div class="cont-item reveal">
+      <span class="cont-num" data-target="4" data-suffix=".8">0</span>
+      <span class="cont-label">★ Nota média</span>
+    </div>
+    <div class="cont-item reveal">
+      <span class="cont-num" data-target="5000" data-prefix="+">0</span>
+      <span class="cont-label">🐾 Pets atendidos</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── SERVIÇOS ── -->
+<section class="servicos">
+  <div class="container">
+    <div class="section-tag reveal">Nossos Serviços</div>
+    <h2 class="reveal">Tudo que seu pet precisa em um só lugar</h2>
+    <p class="subtitle reveal">Da consulta de rotina à cirurgia especializada, a DS VET oferece atendimento completo para cães e gatos no Guará II.</p>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">🩺</div>
+        <h3>Consulta Veterinária</h3>
+        <p>Atendimento clínico geral — diagnóstico, prevenção, vacinas e acompanhamento da saúde do seu pet.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚕️</div>
+        <h3>Cirurgia Geral</h3>
+        <p>Procedimentos cirúrgicos com segurança e cuidado, realizados por veterinários experientes.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🩻</div>
+        <h3>Diagnóstico por Imagem</h3>
+        <p>Radiografia e ultrassonografia para diagnóstico preciso, rápido e sem sair da clínica.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔬</div>
+        <h3>Exames Laboratoriais</h3>
+        <p>Laboratório próprio com resultados ágeis — hemograma, bioquímica, urinálise e mais.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💊</div>
+        <h3>Farmácia Veterinária</h3>
+        <p>Medicamentos e produtos para o tratamento do seu pet disponíveis na própria clínica.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🦷</div>
+        <h3>Odontologia Veterinária</h3>
+        <p>Limpeza dentária, extração e tratamento de doenças bucais em cães e gatos.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">👁️</div>
+        <h3>Oftalmologia Veterinária</h3>
+        <p>Diagnóstico e tratamento de doenças oculares — catarata, glaucoma e conjuntivite.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🥗</div>
+        <h3>Nutrição Veterinária</h3>
+        <p>Orientação nutricional para uma alimentação equilibrada e saudável para o seu pet.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏥</div>
+        <h3>Clínica Médica Veterinária</h3>
+        <p>Avaliação clínica completa, acompanhamento de doenças crônicas e tratamentos de longa duração.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ESPECIALIDADES ── -->
+<section>
+  <div class="container">
+    <div class="section-tag reveal">Especialidades</div>
+    <h2 class="reveal">Especialistas no que seu pet precisa</h2>
+    <p class="subtitle">A DS VET conta com especialidades veterinárias que vão além da clínica geral — cuidado completo para cada condição.</p>
+    <div class="espec-grid">
+      <div class="espec-card">
+        <div class="icon">❤️</div>
+        <div>
+          <h4>Cardiologia Veterinária</h4>
+          <p>Diagnóstico e tratamento de doenças cardíacas em cães e gatos.</p>
+        </div>
+      </div>
+      <div class="espec-card">
+        <div class="icon">🌿</div>
+        <div>
+          <h4>Dermatologia Veterinária</h4>
+          <p>Tratamento de alergias, coceiras, fungos e doenças de pele.</p>
+        </div>
+      </div>
+      <div class="espec-card">
+        <div class="icon">⚗️</div>
+        <div>
+          <h4>Endocrinologia Veterinária</h4>
+          <p>Diabetes, hipotireoidismo, Cushing e outros distúrbios hormonais.</p>
+        </div>
+      </div>
+      <div class="espec-card">
+        <div class="icon">🏃</div>
+        <div>
+          <h4>Fisioterapia Veterinária</h4>
+          <p>Reabilitação física para recuperação pós-cirúrgica e qualidade de vida.</p>
+        </div>
+      </div>
+      <div class="espec-card">
+        <div class="icon">🫘</div>
+        <div>
+          <h4>Nefrologia Veterinária</h4>
+          <p>Diagnóstico e tratamento de doenças renais — insuficiência renal, pedras e infecções.</p>
+        </div>
+      </div>
+      <div class="espec-card">
+        <div class="icon">🧠</div>
+        <div>
+          <h4>Neurologia Veterinária</h4>
+          <p>Avaliação e tratamento de crises epilépticas, hérnias de disco e doenças neurológicas.</p>
+        </div>
+      </div>
+      <div class="espec-card">
+        <div class="icon">🫁</div>
+        <div>
+          <h4>Gastroenterologia Veterinária</h4>
+          <p>Tratamento de doenças do trato digestivo — vômitos, diarreia crônica e doenças intestinais.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DIFERENCIAIS ── -->
+<section class="dif">
+  <div class="container">
+    <div class="section-tag" style="background:rgba(255,255,255,.15);color:#7FD9A2;">Por que escolher a DS VET</div>
+    <h2>A clínica que os tutores do Guará confiam</h2>
+    <p class="subtitle">Mais de 265 avaliações 5 estrelas no Google não são por acaso.</p>
+    <div class="dif-grid">
+      <div class="dif-item">
+        <div class="dif-icon">🔬</div>
+        <h4>Lab. Próprio</h4>
+        <p>Resultado de exames no mesmo dia. Sem espera, diagnóstico imediato.</p>
+      </div>
+      <div class="dif-item">
+        <div class="dif-icon">🚗</div>
+        <h4>Estacionamento Grátis</h4>
+        <p>Fácil acesso e estacionamento gratuito para sua comodidade.</p>
+      </div>
+      <div class="dif-item">
+        <div class="dif-icon">♿</div>
+        <h4>Ambiente Acessível</h4>
+        <p>Estrutura adaptada para todos os tutores e seus pets.</p>
+      </div>
+      <div class="dif-item">
+        <div class="dif-icon">💳</div>
+        <h4>Cartão e PIX</h4>
+        <p>Aceitamos todas as formas de pagamento. Facilidade total para você.</p>
+      </div>
+      <div class="dif-item">
+        <div class="dif-icon">⭐</div>
+        <h4>4.8 no Google</h4>
+        <p>265 avaliações de tutores satisfeitos com o atendimento.</p>
+      </div>
+      <div class="dif-item">
+        <div class="dif-icon">📍</div>
+        <h4>Localização Central</h4>
+        <p>Guará II, atendendo também Cruzeiro, Sudoeste e Octogonal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DEPOIMENTOS ── -->
+<section class="dep">
+  <div class="container">
+    <div class="section-tag reveal">Avaliações Google</div>
+    <h2 class="reveal">O que os tutores dizem sobre a DS VET</h2>
+    <div class="reveal" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:24px;">
+      <div style="display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:12px 20px;">
+        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" style="height:20px;">
+        <div>
+          <div style="font-size:22px;font-weight:900;color:#1A1A1A;line-height:1;">4.8</div>
+          <div style="color:#F59E0B;font-size:16px;letter-spacing:2px;">★★★★★</div>
+        </div>
+        <div style="border-left:1px solid #E5E7EB;padding-left:12px;">
+          <div style="font-size:18px;font-weight:800;color:#1A1A1A;">265</div>
+          <div style="font-size:12px;color:#6B7280;">avaliações</div>
+        </div>
+      </div>
+      <p style="font-size:15px;color:#6B7280;max-width:400px;line-height:1.6;margin:0;">Avaliações reais de tutores do Guará, Sudoeste, Asa Sul e região que confiam na DS VET.</p>
+    </div>
+
+    <div class="carousel-wrap">
+      <button class="car-btn car-prev" onclick="moverCarrossel(-1)">&#8592;</button>
+      <div class="carousel-track-wrap">
+        <div class="carousel-track" id="carTrack">
+
+          <div class="dep-card">
+            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Juliana&background=E53935&color=fff&size=40&bold=true" alt="Juliana"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Juliana <span>· Google</span></div></div></div>
+            <p class="dep-text">"Ótimo lugar e bom preço para vacinas e consulta. Atendimento excelente!"</p>
+          </div>
+
+          <div class="dep-card">
+            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Amanda+Grei&background=8E24AA&color=fff&size=40&bold=true" alt="Amanda Grei"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Amanda Grei <span>· Google</span></div></div></div>
+            <p class="dep-text">"Profissionais capacitados, ambiente agradável, equipe educada. Super recomendo!"</p>
+          </div>
+
+          <div class="dep-card">
+            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Raquel+Carneiro&background=1E88E5&color=fff&size=40&bold=true" alt="Raquel Lacis Carneiro"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Raquel Lacis Carneiro <span>· Google</span></div></div></div>
+            <p class="dep-text">"Os veterinários são ótimos, muito atenciosos. Senti que realmente se importam com o bem-estar do meu pet."</p>
+          </div>
+
+          <div class="dep-card">
+            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Yago+Torres&background=00897B&color=fff&size=40&bold=true" alt="Yago Torres"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Yago Torres <span>· Google</span></div></div></div>
+            <p class="dep-text">"Clínica muito bem equipada, atendimento rápido e profissional. Recomendo muito para quem mora no Guará!"</p>
+          </div>
+
+          <div class="dep-card">
+            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Jalvino+Nascimento&background=F4511E&color=fff&size=40&bold=true" alt="Jalvino Nascimento"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Jalvino Nascimento <span>· Google</span></div></div></div>
+            <p class="dep-text">"Atendimento nota 10! Equipe muito dedicada e atenciosa. Meu pet ficou super bem cuidado."</p>
+          </div>
+
+          <div class="dep-card">
+            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Nilar+Martins&background=039BE5&color=fff&size=40&bold=true" alt="Nilar Martins"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Nilar Martins <span>· Google</span></div></div></div>
+            <p class="dep-text">"Excelente clínica! Ambiente limpo, organizado e equipe muito atenciosa. Com certeza voltarei sempre."</p>
+          </div>
+
+          <div class="dep-card">
+            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Jamiry+Gentil&background=43A047&color=fff&size=40&bold=true" alt="Jamiry Gentil"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Jamiry Gentil <span>· Google</span></div></div></div>
+            <p class="dep-text">"Atendimento muito bom e acolhedor. Veterinários muito competentes e carinhosos com os animais."</p>
+          </div>
+
+          <div class="dep-card">
+            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Beatriz+Lory&background=D81B60&color=fff&size=40&bold=true" alt="Beatriz de Lory"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Beatriz de Lory <span>· Google</span></div></div></div>
+            <p class="dep-text">"Super indico a DS VET! Atendimento humanizado, laboratório próprio e resultado rápido. Melhor do Guará!"</p>
+          </div>
+
+          <div class="dep-card">
+            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Zilta+Carvalho&background=6D4C41&color=fff&size=40&bold=true" alt="Zilta Carvalho"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Zilta Carvalho <span>· Google</span></div></div></div>
+            <p class="dep-text">"Fui com minha pet pela primeira vez e fiquei encantada com o atendimento. Equipe muito profissional."</p>
+          </div>
+
+          <div class="dep-card">
+            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Jennifer+Lima&background=5E35B1&color=fff&size=40&bold=true" alt="Jennifer Lima"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Jennifer Lima <span>· Google</span></div></div></div>
+            <p class="dep-text">"Clínica incrível! Atendimento rápido, preço justo e veterinários extremamente competentes. Recomendo muito!"</p>
+          </div>
+
+          <div class="dep-card">
+            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Rafael+Ferreira&background=00ACC1&color=fff&size=40&bold=true" alt="Rafael Ferreira"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Rafael Ferreira <span>· Google</span></div></div></div>
+            <p class="dep-text">"Melhor clínica veterinária do Guará! Ótimo custo-benefício, equipe atenciosa e estrutura completa."</p>
+          </div>
+
+          <div class="dep-card">
+            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Alexandre+Oliveira&background=FB8C00&color=fff&size=40&bold=true" alt="Alexandre Oliveira"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Alexandre Oliveira <span>· Google</span></div></div></div>
+            <p class="dep-text">"Excelente atendimento! Veterinários muito capacitados. Meu cachorro foi tratado com muito carinho."</p>
+          </div>
+
+        </div>
+      </div>
+      <button class="car-btn car-next" onclick="moverCarrossel(1)">&#8594;</button>
+    </div>
+
+    <div class="car-dots" id="carDots"></div>
+  </div>
+</section>
+
+<!-- ── EQUIPE ── -->
+<section style="padding:44px 24px;">
+  <div class="container">
+    <div class="equipe-banner">
+      <div>
+        <div class="section-tag">Nossa Equipe</div>
+        <h2>Profissionais que cuidam do seu pet com dedicação</h2>
+        <p style="font-size:17px;color:#6B7280;line-height:1.65;margin-top:14px;margin-bottom:28px;">Nossa equipe é formada por veterinários especializados, comprometidos com o bem-estar e a saúde de cada animal. Atendimento com cuidado, respeito e técnica de ponta.</p>
+        <a class="btn-wpp" href="https://wa.me/5561993939232?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" style="display:inline-flex;background:#1B6E3A;gap:10px;padding:14px 28px;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;font-size:15px;">
+          Agendar com a equipe DS VET
+        </a>
+      </div>
+      <img src="images/equipe.jpg" alt="Equipe veterinária DS VET Guará II Brasília" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- ── GALERIA ── -->
+<section class="galeria">
+  <div class="container">
+    <div class="section-tag reveal">Galeria</div>
+    <h2 class="reveal">Pets atendidos na DS VET</h2>
+    <p class="subtitle reveal">Cada pet que passa pela DS VET recebe atendimento com carinho, técnica e dedicação.</p>
+    <div class="galeria-grid">
+      <div class="galeria-item reveal" onclick="abrirLightbox(this)">
+        <img src="images/lulu.jpg" alt="Lulu da Pomerânia atendido na DS VET Guará II Brasília" loading="lazy" />
+        <div class="caption">Lulu da Pomerânia feliz 🐾</div>
+      </div>
+      <div class="galeria-item reveal" onclick="abrirLightbox(this)">
+        <img src="images/gato-soro.jpg" alt="Gato em tratamento na DS VET clínica veterinária Guará II" loading="lazy" />
+        <div class="caption">Tratamento felino</div>
+      </div>
+      <div class="galeria-item reveal" onclick="abrirLightbox(this)">
+        <img src="images/ultrassom.jpg" alt="Diagnóstico por imagem ultrassom veterinário DS VET Brasília" loading="lazy" />
+        <div class="caption">Diagnóstico por imagem</div>
+      </div>
+      <div class="galeria-item reveal" onclick="abrirLightbox(this)">
+        <img src="images/maltes.jpg" alt="Maltês atendido na DS VET Guará II Brasília" loading="lazy" />
+        <div class="caption">Atendimento com carinho</div>
+      </div>
+      <div class="galeria-item reveal" onclick="abrirLightbox(this)">
+        <img src="images/raio-x.jpg" alt="Radiografia veterinária DS VET Guará Brasília" loading="lazy" />
+        <div class="caption">Exames de imagem</div>
+      </div>
+      <div class="galeria-item reveal" onclick="abrirLightbox(this)">
+        <img src="images/husky.jpg" alt="Husky siberiano atendido na DS VET Guará" loading="lazy" />
+        <div class="caption">Husky na DS VET</div>
+      </div>
+      <div class="galeria-item reveal" onclick="abrirLightbox(this)">
+        <img src="images/tutora-pet.jpg" alt="Tutora com pet na DS VET clínica veterinária Guará II" loading="lazy" />
+        <div class="caption">Tutores satisfeitos ❤️</div>
+      </div>
+      <div class="galeria-item reveal" onclick="abrirLightbox(this)">
+        <img src="images/pug.jpg" alt="Pug atendido na DS VET Guará II" loading="lazy" />
+        <div class="caption">Pug em recuperação</div>
+      </div>
+      <div class="galeria-item reveal" onclick="abrirLightbox(this)">
+        <img src="images/yorkshire.jpg" alt="Yorkshire atendido na DS VET Guará Brasília" loading="lazy" />
+        <div class="caption">Yorkshire na DS VET</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA PRINCIPAL ── -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Agende agora pelo WhatsApp</h2>
+    <p>Atendimento rápido, sem complicação. Fale com a gente e marque a consulta do seu pet hoje mesmo.</p>
+    <a class="btn-wpp" href="https://wa.me/5561993939232?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20para%20meu%20pet." target="_blank" rel="noopener" style="display:inline-flex;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.99L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52ZM12 22c-1.85 0-3.66-.5-5.24-1.44l-.37-.22-3.89 1.02 1.04-3.79-.24-.38A9.93 9.93 0 0 1 2 12C2 6.48 6.48 2 12 2c2.67 0 5.18 1.04 7.07 2.93A9.93 9.93 0 0 1 22 12c0 5.52-4.48 10-10 10Zm5.44-7.49c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.15 8.15 0 0 1-2.4-1.48 9.04 9.04 0 0 1-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.01-1.04 2.46s1.06 2.86 1.21 3.06c.15.2 2.09 3.19 5.07 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35Z" fill="white"/></svg>
+      Agendar Consulta Agora
+    </a>
+  </div>
+</section>
+
+<!-- ── LOCALIZAÇÃO ── -->
+<section>
+  <div class="container">
+    <div class="section-tag">Onde Estamos</div>
+    <h2>Fácil de chegar no Guará II</h2>
+    <div class="loc-grid">
+      <div class="loc-info">
+        <h3>DS VET – Clínica Veterinária</h3>
+        <ul class="loc-list">
+          <li>
+            <span class="ico">📍</span>
+            <div>
+              <strong>Endereço</strong>
+              <span>QE 40 Conjunto K, Loja 12 — Guará II<br>Brasília - DF, 71070-112</span>
+            </div>
+          </li>
+          <li>
+            <span class="ico">🕐</span>
+            <div>
+              <strong>Horário de Funcionamento</strong>
+              <span>Segunda a Sexta: 08h30 – 17h30<br>Sábado: consulte disponibilidade</span>
+            </div>
+          </li>
+          <li>
+            <span class="ico">📱</span>
+            <div>
+              <strong>WhatsApp / Telefone</strong>
+              <span>(61) 99393-9232</span>
+            </div>
+          </li>
+          <li>
+            <span class="ico">🗺️</span>
+            <div>
+              <strong>Regiões atendidas</strong>
+              <span>Guará II, Cruzeiro, Sudoeste e Octogonal</span>
+            </div>
+          </li>
+          <li>
+            <span class="ico">🚗</span>
+            <div>
+              <strong>Estacionamento gratuito</strong>
+              <span>Sem preocupação para chegar</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.512!2d-47.982!3d-15.831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a25b7c0c1fd05%3A0x1!2sQE%2040%20Conjunto%20K%2C%20Loja%2012%20-%20Guará%20II%2C%20Brasília%20-%20DF%2C%2071070-112!5e0!3m2!1spt-BR!2sbr!4v1"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BAIRROS ATENDIDOS ── -->
+<section style="background:#F7F8FA; padding:44px 24px;">
+  <div class="container">
+    <div class="section-tag">Área de Atendimento</div>
+    <h2>Veterinário perto de você em Brasília</h2>
+    <p class="subtitle">A DS VET fica no Guará II e atende tutores de toda a região — rápido, fácil e sem precisar cruzar a cidade.</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; margin-top:8px;">
+
+      <div class="card">
+        <div class="card-icon">📍</div>
+        <h3>Veterinário no Guará II</h3>
+        <p>Somos do Guará II (QE 40). Consultas, vacinas, cirurgias e exames para cães e gatos a poucos minutos da sua casa.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📍</div>
+        <h3>Veterinário no Guará</h3>
+        <p>Atendemos tutores de todo o Guará. Venha de carro — temos estacionamento gratuito e fácil acesso pela EPIG.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📍</div>
+        <h3>Veterinário no Lúcio Costa</h3>
+        <p>Moradores do Lúcio Costa (Guará) têm acesso rápido à DS VET — clínica completa com laboratório próprio e especialidades.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📍</div>
+        <h3>Veterinário no Sudoeste</h3>
+        <p>Tutores do Sudoeste encontram na DS VET uma clínica veterinária completa, com cardiologia, dermatologia e fisioterapia.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📍</div>
+        <h3>Veterinário na Asa Sul</h3>
+        <p>Atendemos tutores da Asa Sul que buscam especialidades veterinárias com agilidade no diagnóstico e laboratório próprio.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📍</div>
+        <h3>Veterinário no Núcleo Bandeirante</h3>
+        <p>Perto do Núcleo Bandeirante, a DS VET oferece atendimento completo para cães e gatos com mais de 265 avaliações 5★.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ SEO ── -->
+<section style="padding:44px 24px;">
+  <div class="container">
+    <div class="section-tag">Perguntas Frequentes</div>
+    <h2>Dúvidas sobre a DS VET</h2>
+    <div style="display:flex; flex-direction:column; gap:16px; margin-top:32px; max-width:780px;">
+
+      <details style="background:#F7F8FA; border-radius:12px; padding:20px 24px; cursor:pointer;">
+        <summary style="font-weight:700; font-size:16px; list-style:none; display:flex; justify-content:space-between;">
+          Onde fica a DS VET? <span style="color:#1B6E3A;">+</span>
+        </summary>
+        <p style="margin-top:12px; color:#6B7280; line-height:1.65; font-size:15px;">A DS VET está localizada na QE 40 Conjunto K, Loja 12 — Guará II, Brasília - DF, 71070-112. Há estacionamento gratuito e fácil acesso pela EPIG/DF-085.</p>
+      </details>
+
+      <details style="background:#F7F8FA; border-radius:12px; padding:20px 24px; cursor:pointer;">
+        <summary style="font-weight:700; font-size:16px; list-style:none; display:flex; justify-content:space-between;">
+          Quais bairros a DS VET atende? <span style="color:#1B6E3A;">+</span>
+        </summary>
+        <p style="margin-top:12px; color:#6B7280; line-height:1.65; font-size:15px;">Atendemos tutores do Guará II, Guará, Lúcio Costa, Sudoeste, Asa Sul, Octogonal e Núcleo Bandeirante. Nossa localização no Guará II permite acesso rápido de toda essa região.</p>
+      </details>
+
+      <details style="background:#F7F8FA; border-radius:12px; padding:20px 24px; cursor:pointer;">
+        <summary style="font-weight:700; font-size:16px; list-style:none; display:flex; justify-content:space-between;">
+          A DS VET tem laboratório próprio? <span style="color:#1B6E3A;">+</span>
+        </summary>
+        <p style="margin-top:12px; color:#6B7280; line-height:1.65; font-size:15px;">Sim. Possuímos laboratório próprio, o que garante resultados de exames com muito mais agilidade — muitas vezes no mesmo dia da consulta. Isso agiliza o diagnóstico e o início do tratamento do seu pet.</p>
+      </details>
+
+      <details style="background:#F7F8FA; border-radius:12px; padding:20px 24px; cursor:pointer;">
+        <summary style="font-weight:700; font-size:16px; list-style:none; display:flex; justify-content:space-between;">
+          Como agendar uma consulta na DS VET? <span style="color:#1B6E3A;">+</span>
+        </summary>
+        <p style="margin-top:12px; color:#6B7280; line-height:1.65; font-size:15px;">Você pode agendar diretamente pelo WhatsApp (61) 99393-9232 ou pela nossa <a href="agenda.html" style="color:#1B6E3A; font-weight:600;">agenda online</a>. O agendamento é rápido e você recebe confirmação imediata.</p>
+      </details>
+
+      <details style="background:#F7F8FA; border-radius:12px; padding:20px 24px; cursor:pointer;">
+        <summary style="font-weight:700; font-size:16px; list-style:none; display:flex; justify-content:space-between;">
+          A clínica atende cães e gatos? <span style="color:#1B6E3A;">+</span>
+        </summary>
+        <p style="margin-top:12px; color:#6B7280; line-height:1.65; font-size:15px;">Sim, atendemos cães e gatos com toda a estrutura necessária: consultas, cirurgias, exames de imagem, laboratório, farmácia veterinária e especialidades como cardiologia, dermatologia, endocrinologia e fisioterapia.</p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <strong>DS VET – Clínica Veterinária</strong><br>
+  QE 40 Conjunto K, Loja 12 — Guará II, Brasília - DF &nbsp;|&nbsp;
+  <a href="tel:+5561993939232">(61) 99393-9232</a> &nbsp;|&nbsp;
+  <a href="https://instagram.com/dsveterinaria" target="_blank">@dsveterinaria</a><br><br>
+  © 2026 DS VET. Desenvolvido por <strong>AQV Agência</strong>.
+</footer>
+
+
+<!-- ── LGPD COOKIES ── -->
+<div id="lgpd" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:997; background:#1A1A1A; color:#fff; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+  <p style="font-size:13px; opacity:.85; margin:0; flex:1; min-width:200px;">🍪 Usamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa política de privacidade.</p>
+  <button onclick="aceitarLGPD()" style="background:#1B6E3A;color:#fff;border:none;padding:10px 24px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap;">Aceitar</button>
+</div>
+
+<style>
+@keyframes slideUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+</style>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lightbox" onclick="fecharLightbox()">
+  <span class="lightbox-close" onclick="fecharLightbox()">×</span>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<script>
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+// Adiciona reveal nos cards E já observa cada um
+document.querySelectorAll('.cards-grid .card, .espec-grid .espec-card, .dif-grid .dif-item').forEach((el, i) => {
+  el.classList.add('reveal');
+  el.style.transitionDelay = (i * 0.06) + 's';
+  observer.observe(el);
+});
+
+// Observa elementos que já têm a classe reveal no HTML
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+// ── CONTADORES ANIMADOS ──
+const contObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const target = +el.dataset.target;
+    const suffix = el.dataset.suffix || '';
+    const prefix = el.dataset.prefix || '';
+    const step = target / (1800 / 16);
+    let current = 0;
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = prefix + Math.floor(current).toLocaleString('pt-BR') + suffix;
+      if (current >= target) clearInterval(timer);
+    }, 16);
+    contObserver.unobserve(el);
+  });
+}, { threshold: 0.4 });
+
+document.querySelectorAll('.cont-num[data-target]').forEach(el => contObserver.observe(el));
+
+// ── CARROSSEL ──
+(function() {
+  const track = document.getElementById('carTrack');
+  const dotsWrap = document.getElementById('carDots');
+  if (!track) return;
+
+  const cards = track.querySelectorAll('.dep-card');
+  let perView = window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 4;
+  let current = 0;
+  const total = cards.length;
+
+  // Cria dots
+  for (let i = 0; i < total; i++) {
+    const d = document.createElement('button');
+    d.className = 'car-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => irPara(i);
+    dotsWrap.appendChild(d);
+  }
+
+  function irPara(idx) {
+    current = (idx + total) % total;
+    const cardW = cards[0].offsetWidth + 20;
+    track.style.transform = `translateX(-${current * cardW}px)`;
+    dotsWrap.querySelectorAll('.car-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  window.moverCarrossel = (dir) => irPara(current + dir);
+
+  // Auto-avanço
+  let auto = setInterval(() => irPara(current + 1), 4000);
+  track.parentElement.addEventListener('mouseenter', () => clearInterval(auto));
+  track.parentElement.addEventListener('mouseleave', () => { auto = setInterval(() => irPara(current + 1), 4000); });
+
+  // Touch swipe
+  let startX = 0;
+  track.addEventListener('touchstart', e => startX = e.touches[0].clientX, { passive: true });
+  track.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) irPara(current + (diff > 0 ? 1 : -1));
+  });
+
+  window.addEventListener('resize', () => {
+    perView = window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+    irPara(current);
+  });
+})();
+
+// ── LIGHTBOX ──
+function abrirLightbox(item) {
+  const img = item.querySelector('img');
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox-img').alt = img.alt;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function fecharLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharLightbox(); });
+</script>
+
+<!-- ── GOOGLE REVIEWS API ── -->
+<script>
+// ══════════════════════════════════════════════
+//  COLE SUA CHAVE API DO GOOGLE AQUI
+// ══════════════════════════════════════════════
+const GOOGLE_API_KEY = 'AIzaSyCYs9vF_bTCcJlp-wgh54rcb0D7lwgIVyw';
+const PLACE_ID       = 'ChIJBf3BwHjgsZQRoNNV7cUlGQ4'; // DS VET Guará II
+
+function iniciarGoogleReviews() {
+  if (!GOOGLE_API_KEY || GOOGLE_API_KEY === 'COLE_SUA_CHAVE_AQUI') return;
+
+  const script = document.createElement('script');
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&libraries=places&callback=carregarReviews`;
+  script.async = true;
+  document.head.appendChild(script);
+}
+
+window.carregarReviews = function() {
+  const service = new google.maps.places.PlacesService(document.createElement('div'));
+  service.getDetails({
+    placeId: PLACE_ID,
+    fields: ['reviews', 'rating', 'user_ratings_total'],
+    language: 'pt-BR'
+  }, (place, status) => {
+    if (status !== google.maps.places.PlacesServiceStatus.OK || !place.reviews) return;
+    renderizarReviews(place.reviews);
+  });
+};
+
+function renderizarReviews(reviews) {
+  const track = document.getElementById('carTrack');
+  const dotsWrap = document.getElementById('carDots');
+  if (!track) return;
+
+  track.innerHTML = reviews.map(r => {
+    const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+    const foto = r.profile_photo_url || '';
+    const iniciais = r.author_name.split(' ').map(n => n[0]).slice(0,2).join('').toUpperCase();
+    const avatarHtml = foto
+      ? `<img src="${foto}" alt="${r.author_name}" class="dep-avatar-img">`
+      : `<div class="dep-avatar">${iniciais}</div>`;
+
+    return `
+      <div class="dep-card">
+        <div class="dep-top">
+          ${avatarHtml}
+          <div>
+            <div class="dep-stars" style="color:#F59E0B;">${stars}</div>
+            <div class="dep-author">${r.author_name} <span>· Google</span></div>
+          </div>
+        </div>
+        <p class="dep-text">"${r.text || 'Ótimo atendimento!'}"</p>
+      </div>`;
+  }).join('');
+
+  // Reinicia o carrossel com os novos cards
+  dotsWrap.innerHTML = '';
+  const cards = track.querySelectorAll('.dep-card');
+  cards.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'car-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => irParaReview(i, cards, dotsWrap);
+    dotsWrap.appendChild(d);
+  });
+}
+
+function irParaReview(idx, cards, dotsWrap) {
+  const cardW = cards[0].offsetWidth + 20;
+  document.getElementById('carTrack').style.transform = `translateX(-${idx * cardW}px)`;
+  dotsWrap.querySelectorAll('.car-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+}
+
+iniciarGoogleReviews();
+
+
+// ── LGPD ──
+if (!localStorage.getItem('lgpd')) {
+  document.getElementById('lgpd').style.display = 'flex';
+}
+function aceitarLGPD() {
+  localStorage.setItem('lgpd', '1');
+  document.getElementById('lgpd').style.display = 'none';
+}
+</script>
+
+</body>
+</html>
