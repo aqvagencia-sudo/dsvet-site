@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog DS VET – Dicas de Saúde para Cães e Gatos | Guará II Brasília</title>
+  <title>Blog DS VET | Dicas de Saúde para Cães e Gatos | Guará II Brasília</title>
   <meta name="description" content="Dicas de saúde veterinária para cães e gatos. Conteúdo criado pelos veterinários da DS VET no Guará II, Brasília." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -18,9 +18,10 @@
     .hero-blog p{font-size:16px;opacity:.85}
     .container{max-width:1060px;margin:0 auto;padding:0 24px}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;padding:48px 0}
-    .post-card{border:1px solid #E5E7EB;border-radius:14px;overflow:hidden;transition:transform .2s,box-shadow .2s;text-decoration:none;color:inherit;display:block}
+    .post-card{border:1px solid #E5E7EB;border-radius:14px;overflow:hidden;transition:transform .2s,box-shadow .2s;text-decoration:none;color:inherit;display:block;cursor:pointer;background:#fff}
     .post-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.1)}
     .post-img{width:100%;height:200px;object-fit:cover;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:64px}
+    .post-img img{width:100%;height:100%;object-fit:cover}
     .post-body{padding:20px}
     .post-tag{display:inline-block;background:var(--green-light);color:var(--green);padding:3px 10px;border-radius:50px;font-size:11px;font-weight:700;margin-bottom:10px;text-transform:uppercase}
     .post-title{font-size:17px;font-weight:700;margin-bottom:8px;line-height:1.35}
@@ -28,70 +29,137 @@
     .post-meta{font-size:12px;color:#9CA3AF}
     footer{background:#1A1A1A;color:rgba(255,255,255,.65);padding:24px;text-align:center;font-size:13px}
     footer a{color:#7FD9A2;text-decoration:none}
+    #loading{text-align:center;padding:48px;color:var(--gray);font-size:15px}
+
+    /* Modal do post */
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1000;display:none;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;}
+    .modal-overlay.open{display:flex}
+    .modal-post{background:#fff;border-radius:18px;max-width:720px;width:100%;margin:auto;overflow:hidden}
+    .modal-post-img{width:100%;max-height:300px;object-fit:cover}
+    .modal-post-body{padding:28px 32px}
+    .modal-close{float:right;background:none;border:none;font-size:26px;cursor:pointer;color:var(--gray);margin-left:12px;line-height:1}
+    .modal-post-title{font-size:24px;font-weight:800;margin-bottom:12px;line-height:1.3}
+    .modal-post-meta{font-size:13px;color:var(--gray);margin-bottom:20px}
+    .modal-post-content{font-size:15px;line-height:1.8;color:#374151;white-space:pre-wrap}
+    @media(max-width:600px){.modal-post-body{padding:20px 18px}.modal-post-title{font-size:19px}}
   </style>
 </head>
 <body>
 <header>
   <div class="logo">DS <span>VET</span></div>
-  <a class="back" href="index.html">← Voltar ao site</a>
+  <a class='back' href='/'>← Voltar ao site</a>
 </header>
 
 <div class="hero-blog">
   <div class="container">
     <h1>Blog DS VET</h1>
-    <p>Dicas de saúde e bem-estar para cães e gatos — pelos veterinários do Guará II</p>
+    <p>Dicas de saúde e bem-estar para cães e gatos - pelos veterinários do Guará II</p>
   </div>
 </div>
 
 <div class="container">
-  <div class="grid">
-
-    <a class="post-card" href="blog/sinais-doenca-renal-gatos.html">
-      <div class="post-img">🐱</div>
-      <div class="post-body">
-        <span class="post-tag">Nefrologia</span>
-        <h2 class="post-title">7 sinais de doença renal em gatos que todo tutor precisa conhecer</h2>
-        <p class="post-desc">A doença renal é uma das condições mais comuns em gatos adultos. Identifique os sinais precocemente e salve a vida do seu pet.</p>
-        <div class="post-meta">DS VET · Guará II, Brasília</div>
-      </div>
-    </a>
-
-    <a class="post-card" href="blog/vacinas-cachorro-calendario.html">
-      <div class="post-img">💉</div>
-      <div class="post-body">
-        <span class="post-tag">Prevenção</span>
-        <h2 class="post-title">Calendário completo de vacinas para cães — do filhote ao adulto</h2>
-        <p class="post-desc">Saiba quais vacinas seu cachorro precisa tomar, em que idade e com qual frequência. Guia completo e atualizado.</p>
-        <div class="post-meta">DS VET · Guará II, Brasília</div>
-      </div>
-    </a>
-
-    <a class="post-card" href="blog/alergia-pele-caes.html">
-      <div class="post-img">🌿</div>
-      <div class="post-body">
-        <span class="post-tag">Dermatologia</span>
-        <h2 class="post-title">Alergia de pele em cães: causas, sintomas e tratamento</h2>
-        <p class="post-desc">Seu cachorro coça demais? Pode ser alergia. Descubra as principais causas e como tratar com ajuda de um veterinário dermatologista.</p>
-        <div class="post-meta">DS VET · Guará II, Brasília</div>
-      </div>
-    </a>
-
-    <a class="post-card" href="blog/diabetes-em-pets.html">
-      <div class="post-img">⚗️</div>
-      <div class="post-body">
-        <span class="post-tag">Endocrinologia</span>
-        <h2 class="post-title">Diabetes em cães e gatos: como identificar e controlar</h2>
-        <p class="post-desc">A diabetes afeta cada vez mais pets. Aprenda a reconhecer os sintomas e entenda como funciona o tratamento com insulina.</p>
-        <div class="post-meta">DS VET · Guará II, Brasília</div>
-      </div>
-    </a>
-
-  </div>
+  <div id="loading">⏳ Carregando posts...</div>
+  <div class="grid" id="posts-grid" style="display:none;"></div>
 </div>
 
 <footer>
-  <strong style="color:#fff">DS VET – Clínica Veterinária</strong> · QE 40 Conjunto K, Loja 12 — Guará II, Brasília<br>
-  <a href="tel:+5561993939232">(61) 99393-9232</a> · <a href="https://instagram.com/dsveterinaria">@dsveterinaria</a>
+  <strong style="color:#fff">DS VET | Clínica Veterinária</strong> · QE 40 Conjunto K, Loja 12 - Guará II, Brasília<br>
+  <a href="tel:+5561993809232">(61) 99380-9232</a> · <a href="https://instagram.com/dsveterinaria">@dsveterinaria</a>
 </footer>
+
+<!-- Modal post completo -->
+<div class="modal-overlay" id="modal-post" onclick="fecharModal(event)">
+  <div class="modal-post">
+    <img id="modal-img" class="modal-post-img" src="" alt="" style="display:none">
+    <div class="modal-post-body">
+      <button class="modal-close" onclick="document.getElementById('modal-post').classList.remove('open')">×</button>
+      <span id="modal-tag" class="post-tag"></span>
+      <h2 class="modal-post-title" id="modal-titulo"></h2>
+      <div class="modal-post-meta" id="modal-meta"></div>
+      <div class="modal-post-content" id="modal-conteudo"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey:            "AIzaSyCPQDFy6mxvUiYCPCrlFBahjM7Obj8NfmM",
+  authDomain:        "dsvet-site.firebaseapp.com",
+  projectId:         "dsvet-site",
+  storageBucket:     "dsvet-site.firebasestorage.app",
+  messagingSenderId: "531538143765",
+  appId:             "1:531538143765:web:4e6109898312c0393a3c1c"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+const POSTS_ESTATICOS = [
+  { titulo:'7 sinais de doença renal em gatos que todo tutor precisa conhecer', tag:'Nefrologia', autor:'DS VET', data:'', descricao:'A doença renal é uma das condições mais comuns em gatos adultos. Identifique os sinais precocemente e salve a vida do seu pet.', foto:'🐱', conteudo:'' },
+  { titulo:'Calendário completo de vacinas para cães - do filhote ao adulto', tag:'Prevenção', autor:'DS VET', data:'', descricao:'Saiba quais vacinas seu cachorro precisa tomar, em que idade e com qual frequência. Guia completo e atualizado.', foto:'💉', conteudo:'' },
+  { titulo:'Alergia de pele em cães: causas, sintomas e tratamento', tag:'Dermatologia', autor:'DS VET', data:'', descricao:'Seu cachorro coça demais? Pode ser alergia. Descubra as principais causas e como tratar com ajuda de um veterinário dermatologista.', foto:'🌿', conteudo:'' },
+  { titulo:'Diabetes em cães e gatos: como identificar e controlar', tag:'Endocrinologia', autor:'DS VET', data:'', descricao:'A diabetes afeta cada vez mais pets. Aprenda a reconhecer os sintomas e entenda como funciona o tratamento com insulina.', foto:'⚗️', conteudo:'' },
+];
+
+function abrirPost(post) {
+  if (!post.conteudo) return;
+  const modal = document.getElementById('modal-post');
+  const img = document.getElementById('modal-img');
+  if (post.foto && post.foto.startsWith('data:')) {
+    img.src = post.foto; img.style.display = 'block';
+  } else {
+    img.style.display = 'none';
+  }
+  document.getElementById('modal-tag').textContent = post.tag;
+  document.getElementById('modal-titulo').textContent = post.titulo;
+  document.getElementById('modal-meta').textContent = `${post.autor}${post.data ? ' · ' + post.data : ''}`;
+  document.getElementById('modal-conteudo').textContent = post.conteudo;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function fecharModal(e) {
+  if (e.target === document.getElementById('modal-post')) {
+    document.getElementById('modal-post').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+function renderCard(post) {
+  const div = document.createElement('div');
+  div.className = 'post-card';
+  div.onclick = () => abrirPost(post);
+  const fotoHtml = post.foto && post.foto.startsWith('data:')
+    ? `<div class="post-img"><img src="${post.foto}" alt="${post.titulo}"></div>`
+    : `<div class="post-img">${post.foto || '🐾'}</div>`;
+  div.innerHTML = `
+    ${fotoHtml}
+    <div class="post-body">
+      <span class="post-tag">${post.tag}</span>
+      <h2 class="post-title">${post.titulo}</h2>
+      <p class="post-desc">${post.descricao}</p>
+      <div class="post-meta">${post.autor}${post.data ? ' · ' + post.data : ''} · DS VET · Guará II</div>
+    </div>`;
+  return div;
+}
+
+async function carregarBlog() {
+  const grid = document.getElementById('posts-grid');
+  const loading = document.getElementById('loading');
+  try {
+    const snap = await db.collection('posts_blog').orderBy('createdAt', 'desc').get();
+    const posts = snap.docs.map(d => d.data());
+    const todos = [...posts, ...POSTS_ESTATICOS];
+    todos.forEach(p => grid.appendChild(renderCard(p)));
+  } catch(e) {
+    POSTS_ESTATICOS.forEach(p => grid.appendChild(renderCard(p)));
+  }
+  loading.style.display = 'none';
+  grid.style.display = 'grid';
+}
+
+carregarBlog();
+</script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agendar Consulta — DS VET Clínica Veterinária</title>
+  <title>Agendar Consulta - DS VET Clínica Veterinária</title>
   <meta name="description" content="Agende sua consulta veterinária na DS VET, Guará II, Brasília. Rápido, fácil e online." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
@@ -119,7 +119,7 @@
       margin-bottom: 24px; line-height: 1.5;
     }
 
-    /* ── ETAPA 1 — MÉDICOS ── */
+    /* ── ETAPA 1 - MÉDICOS ── */
     .medico-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -152,7 +152,7 @@
     .medico-nome { font-size: 15px; font-weight: 700; margin-bottom: 4px; color: var(--text); }
     .medico-espec { font-size: 13px; color: var(--gray); }
 
-    /* ── ETAPA 2 — DATAS ── */
+    /* ── ETAPA 2 - DATAS ── */
     .datas-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
@@ -177,7 +177,7 @@
     .data-mes { font-size: 12px; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: .5px; }
     .data-sem { font-size: 11px; color: var(--gray); margin-top: 2px; }
 
-    /* ── ETAPA 3 — HORÁRIOS ── */
+    /* ── ETAPA 3 - HORÁRIOS ── */
     .horarios-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
@@ -202,7 +202,7 @@
       box-shadow: 0 0 0 3px rgba(27,110,58,.15);
     }
 
-    /* ── ETAPA 4 — FORMULÁRIO ── */
+    /* ── ETAPA 4 - FORMULÁRIO ── */
     .form-grid {
       display: grid;
       gap: 16px;
@@ -231,7 +231,7 @@
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
 
-    /* ── ETAPA 5 — RESUMO ── */
+    /* ── ETAPA 5 - RESUMO ── */
     .resumo-list {
       display: flex; flex-direction: column; gap: 14px;
       margin-bottom: 28px;
@@ -367,8 +367,8 @@
 
 <!-- HEADER -->
 <header>
-  <a href="index.html" class="logo">DS <span>VET</span></a>
-  <a href="index.html" class="back-link">
+  <a class='logo' href='/'>DS <span>VET</span></a>
+  <a class='back-link' href='/'>
     ← Voltar ao site
   </a>
 </header>
@@ -414,7 +414,7 @@
   </div>
 
   <!-- ══════════════════════════════════════
-       ETAPA 1 — ESCOLHA O VETERINÁRIO
+       ETAPA 1 - ESCOLHA O VETERINÁRIO
   ══════════════════════════════════════ -->
   <div id="step-1" class="card">
     <div class="card-title">Escolha o veterinário</div>
@@ -433,7 +433,7 @@
   </div>
 
   <!-- ══════════════════════════════════════
-       ETAPA 2 — ESCOLHA A DATA
+       ETAPA 2 - ESCOLHA A DATA
   ══════════════════════════════════════ -->
   <div id="step-2" class="card" style="display:none;">
     <div class="card-title">Escolha a data</div>
@@ -453,7 +453,7 @@
   </div>
 
   <!-- ══════════════════════════════════════
-       ETAPA 3 — ESCOLHA O HORÁRIO
+       ETAPA 3 - ESCOLHA O HORÁRIO
   ══════════════════════════════════════ -->
   <div id="step-3" class="card" style="display:none;">
     <div class="card-title">Escolha o horário</div>
@@ -473,7 +473,7 @@
   </div>
 
   <!-- ══════════════════════════════════════
-       ETAPA 4 — SEUS DADOS
+       ETAPA 4 - SEUS DADOS
   ══════════════════════════════════════ -->
   <div id="step-4" class="card" style="display:none;">
     <div class="card-title">Seus dados</div>
@@ -526,7 +526,7 @@
   </div>
 
   <!-- ══════════════════════════════════════
-       ETAPA 5 — CONFIRMAÇÃO
+       ETAPA 5 - CONFIRMAÇÃO
   ══════════════════════════════════════ -->
   <div id="step-5" class="card" style="display:none;">
     <div class="card-title">Confirmar agendamento</div>
@@ -563,9 +563,9 @@
 
   <!-- FOOTER -->
   <div class="page-footer">
-    DS VET — QE 40 Conjunto K, Loja 12, Guará II, Brasília<br>
-    <a href="tel:+5561993939232">(61) 99393-9232</a> &nbsp;·&nbsp;
-    <a href="https://wa.me/5561993939232" target="_blank">WhatsApp</a>
+    DS VET - QE 40 Conjunto K, Loja 12, Guará II, Brasília<br>
+    <a href="tel:+5561993809232">(61) 99380-9232</a> &nbsp;·&nbsp;
+    <a href="https://wa.me/5561993809232" target="_blank">WhatsApp</a>
   </div>
 
 </div><!-- /page-wrap -->
@@ -576,15 +576,15 @@
 
 <script>
 // ══════════════════════════════════════
-// FIREBASE CONFIG — SUBSTITUA PELOS SEUS DADOS
+// FIREBASE CONFIG - SUBSTITUA PELOS SEUS DADOS
 // ══════════════════════════════════════
 const firebaseConfig = {
-  apiKey:            "COLE_SUA_API_KEY",
-  authDomain:        "SEU_PROJETO.firebaseapp.com",
-  projectId:         "SEU_PROJETO_ID",
-  storageBucket:     "SEU_PROJETO.appspot.com",
-  messagingSenderId: "SEU_SENDER_ID",
-  appId:             "SEU_APP_ID"
+  apiKey:            "AIzaSyCPQDFy6mxvUiYCPCrlFBahjM7Obj8NfmM",
+  authDomain:        "dsvet-site.firebaseapp.com",
+  projectId:         "dsvet-site",
+  storageBucket:     "dsvet-site.firebasestorage.app",
+  messagingSenderId: "531538143765",
+  appId:             "1:531538143765:web:4e6109898312c0393a3c1c"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -690,38 +690,47 @@ function goToStep(n) {
 }
 
 // ══════════════════════════════════════
-// ETAPA 1 — CARREGAR MÉDICOS
+// ETAPA 1 - CARREGAR MÉDICOS
 // ══════════════════════════════════════
+const MEDICOS_FIXOS = [
+  { id: 'delcio',   nome: 'Delcio Santos', especialidade: 'Clínico Geral' },
+  { id: 'fernanda', nome: 'Fernanda',       especialidade: 'Clínico Geral' },
+];
+
+function renderMedicos(medicos) {
+  const container = document.getElementById('medicos-container');
+  const grid = document.createElement('div');
+  grid.className = 'medico-grid';
+  medicos.forEach(m => {
+    const card = document.createElement('div');
+    card.className = 'medico-card';
+    card.dataset.id = m.id;
+    card.innerHTML = `
+      <div class="medico-avatar">${m.nome.charAt(0).toUpperCase()}</div>
+      <div class="medico-nome">Dr(a). ${m.nome}</div>
+      <div class="medico-espec">${m.especialidade}</div>
+    `;
+    card.addEventListener('click', () => selecionarMedico(m, card));
+    grid.appendChild(card);
+  });
+  container.innerHTML = '';
+  container.appendChild(grid);
+}
+
 async function carregarMedicos() {
   const container = document.getElementById('medicos-container');
   try {
-    const snap = await db.collection('medicos').where('ativo', '==', true).get();
-    if (snap.empty) {
-      container.innerHTML = `<div class="empty-state"><div class="empty-icon">🩺</div><p>Nenhum veterinário disponível no momento.<br>Entre em contato pelo WhatsApp.</p></div>`;
-      return;
-    }
+    const snap = await db.collection('medicos').get();
     const medicos = [];
     snap.forEach(doc => medicos.push({ id: doc.id, ...doc.data() }));
-
-    const grid = document.createElement('div');
-    grid.className = 'medico-grid';
-    medicos.forEach(m => {
-      const card = document.createElement('div');
-      card.className = 'medico-card';
-      card.dataset.id = m.id;
-      card.innerHTML = `
-        <div class="medico-avatar">${m.nome.charAt(0).toUpperCase()}</div>
-        <div class="medico-nome">Dr(a). ${m.nome}</div>
-        <div class="medico-espec">${m.especialidade}</div>
-      `;
-      card.addEventListener('click', () => selecionarMedico(m, card));
-      grid.appendChild(card);
-    });
-    container.innerHTML = '';
-    container.appendChild(grid);
+    if (medicos.length > 0) {
+      renderMedicos(medicos);
+    } else {
+      renderMedicos(MEDICOS_FIXOS);
+    }
   } catch (e) {
     console.error(e);
-    container.innerHTML = `<div class="error-state"><div class="error-icon">⚠️</div><p>Erro ao carregar veterinários. Verifique a conexão.</p></div>`;
+    renderMedicos(MEDICOS_FIXOS);
   }
 }
 
@@ -739,7 +748,7 @@ function goToStep2() {
 }
 
 // ══════════════════════════════════════
-// ETAPA 2 — CARREGAR DATAS
+// ETAPA 2 - CARREGAR DATAS
 // ══════════════════════════════════════
 async function carregarDatas() {
   const container = document.getElementById('datas-container');
@@ -753,13 +762,13 @@ async function carregarDatas() {
   try {
     const snap = await db.collection('horarios')
       .where('medicoId', '==', state.medico.id)
-      .where('data', '>=', hoje)
       .get();
 
-    // Filtra docs com ao menos 1 slot livre
+    // Filtra em JS: apenas datas futuras com ao menos 1 slot livre
     const datas = [];
     snap.forEach(doc => {
       const d = doc.data();
+      if (!d.data || d.data < hoje) return;
       const temLivre = d.slots && d.slots.some(s => !s.ocupado);
       if (temLivre) datas.push(d.data);
     });
@@ -803,12 +812,12 @@ function goToStep3() {
 }
 
 // ══════════════════════════════════════
-// ETAPA 3 — CARREGAR HORÁRIOS
+// ETAPA 3 - CARREGAR HORÁRIOS
 // ══════════════════════════════════════
 async function carregarHorarios() {
   const container = document.getElementById('horarios-container');
   const sub = document.getElementById('step3-sub');
-  sub.textContent = `Horários livres em ${formatDataBR(state.data)} — Dr(a). ${state.medico.nome}`;
+  sub.textContent = `Horários livres em ${formatDataBR(state.data)} - Dr(a). ${state.medico.nome}`;
   container.innerHTML = `<div class="loading-state"><div class="loading-spinner"></div><p>Carregando horários...</p></div>`;
   document.getElementById('btn-step3-next').disabled = true;
   state.horario = null;
@@ -858,7 +867,7 @@ function goToStep4() {
 }
 
 // ══════════════════════════════════════
-// ETAPA 4 — VALIDAÇÃO DO FORMULÁRIO
+// ETAPA 4 - VALIDAÇÃO DO FORMULÁRIO
 // ══════════════════════════════════════
 function validarForm() {
   let ok = true;
@@ -907,12 +916,12 @@ function goToStep5() {
 }
 
 // ══════════════════════════════════════
-// ETAPA 5 — RESUMO
+// ETAPA 5 - RESUMO
 // ══════════════════════════════════════
 function montarResumo() {
   const lista = document.getElementById('resumo-list');
   const itens = [
-    { icon: '🩺', label: 'Veterinário', value: `Dr(a). ${state.medico.nome} — ${state.medico.especialidade}` },
+    { icon: '🩺', label: 'Veterinário', value: `Dr(a). ${state.medico.nome} - ${state.medico.especialidade}` },
     { icon: '📅', label: 'Data', value: formatDataBR(state.data) },
     { icon: '🕐', label: 'Horário', value: state.horario },
     { icon: '👤', label: 'Tutor', value: state.nome },
@@ -932,7 +941,7 @@ function montarResumo() {
 }
 
 // ══════════════════════════════════════
-// CONFIRMAR AGENDAMENTO — TRANSAÇÃO
+// CONFIRMAR AGENDAMENTO - TRANSAÇÃO
 // ══════════════════════════════════════
 async function confirmarAgendamento() {
   const btn = document.getElementById('btn-confirmar');
@@ -997,7 +1006,7 @@ function montarSucesso() {
   `;
 
   const txt = encodeURIComponent(`Olá! Acabei de agendar uma consulta para ${state.pet} com Dr(a). ${state.medico.nome} em ${formatDataBR(state.data)} às ${state.horario}. Meu nome é ${state.nome}.`);
-  document.getElementById('btn-wpp').href = `https://wa.me/5561993939232?text=${txt}`;
+  document.getElementById('btn-wpp').href = `https://wa.me/5561993809232?text=${txt}`;
 }
 
 // ══════════════════════════════════════
