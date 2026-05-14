@@ -1476,8 +1476,8 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharLightb
 // ══════════════════════════════════════════════
 //  COLE SUA CHAVE API DO GOOGLE AQUI
 // ══════════════════════════════════════════════
-const GOOGLE_API_KEY = 'AIzaSyCYs9vF_bTCcJlp-wgh54rcb0D7lwgIVyw';
-const PLACE_ID       = 'ChIJBf3BwHjgsZQRoNNV7cUlGQ4'; // DS VET Guará II
+const GOOGLE_API_KEY = 'AIzaSyAac9SPl2uhu-QF_4NwCR-y0wfOvEzrbuQ';
+const PLACE_ID       = 'ChIJH0aS5B4uWpMREbUg7WSdYLk'; // DS VET Guará II
 
 function iniciarGoogleReviews() {
   if (!GOOGLE_API_KEY || GOOGLE_API_KEY === 'COLE_SUA_CHAVE_AQUI') return;
@@ -1505,12 +1505,20 @@ function renderizarReviews(reviews) {
   const dotsWrap = document.getElementById('carDots');
   if (!track) return;
 
-  track.innerHTML = reviews.map(r => {
+  // Nomes já exibidos nos depoimentos estáticos — evita duplicar
+  const nomesExistentes = Array.from(track.querySelectorAll('.dep-author'))
+    .map(el => el.textContent.replace('· Google', '').trim().toLowerCase());
+
+  const novos = reviews.filter(r =>
+    r.author_name && !nomesExistentes.includes(r.author_name.trim().toLowerCase())
+  );
+
+  const html = novos.map(r => {
     const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
     const foto = r.profile_photo_url || '';
     const iniciais = r.author_name.split(' ').map(n => n[0]).slice(0,2).join('').toUpperCase();
     const avatarHtml = foto
-      ? `<img src="${foto}" alt="${r.author_name}" class="dep-avatar-img">`
+      ? `<img src="${foto}" alt="${r.author_name}" class="dep-avatar-img" referrerpolicy="no-referrer">`
       : `<div class="dep-avatar">${iniciais}</div>`;
 
     return `
@@ -1526,7 +1534,10 @@ function renderizarReviews(reviews) {
       </div>`;
   }).join('');
 
-  // Reinicia o carrossel com os novos cards
+  // Acrescenta os novos da API depois dos 7 depoimentos reais já estáticos
+  track.insertAdjacentHTML('beforeend', html);
+
+  // Reinicia o carrossel com todos os cards (estáticos + novos da API)
   dotsWrap.innerHTML = '';
   const cards = track.querySelectorAll('.dep-card');
   cards.forEach((_, i) => {
