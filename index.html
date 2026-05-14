@@ -197,6 +197,12 @@
       transition: transform .2s, box-shadow .2s;
     }
     .btn-wpp:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.3); }
+    @keyframes wppPulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,.35); }
+      50% { box-shadow: 0 4px 28px rgba(37,211,102,.75); }
+    }
+    .btn-wpp { animation: wppPulse 2.6s ease-in-out infinite; }
+    .btn-wpp:hover { animation: none; }
     .btn-outline {
       display: flex; align-items: center; gap: 10px;
       border: 2px solid rgba(255,255,255,.6); color: #fff;
@@ -205,6 +211,14 @@
       transition: background .2s, border-color .2s;
     }
     .btn-outline:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+    /* Hero stats */
+    .hero-stats {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 14px 28px; margin: 26px auto 0; max-width: 600px;
+    }
+    .hero-stat { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; }
+    .hero-stat strong { font-size: 17px; font-weight: 800; color: #7FD9A2; }
+    .hero-stat span { opacity: .85; }
 
     /* ── SOCIAL PROOF BAR ── */
     .proof-bar {
@@ -531,16 +545,21 @@
   <div class="hero-inner">
     <div class="hero-text">
       <div class="hero-badge">🐾 Clínica Veterinária no Guará II, Brasília</div>
-      <h1>Seu pet merece os <em>melhores cuidados</em> veterinários</h1>
-      <p>Consultas, cirurgias, exames e especialidades para cães e gatos. Atendimento humanizado e diagnóstico ágil. Tudo no Guará II.</p>
+      <h1>Clínica veterinária no <em>Guará</em> com atendimento humanizado</h1>
+      <p>Consultas, vacinas, exames e cirurgias para cães e gatos, com uma equipe que cuida do seu pet como parte da família. Tudo no Guará II.</p>
       <div class="hero-btns">
         <a class="btn-wpp" href="https://wa.me/5561993939232?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20para%20meu%20pet." target="_blank" rel="noopener">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.99L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52ZM12 22c-1.85 0-3.66-.5-5.24-1.44l-.37-.22-3.89 1.02 1.04-3.79-.24-.38A9.93 9.93 0 0 1 2 12C2 6.48 6.48 2 12 2c2.67 0 5.18 1.04 7.07 2.93A9.93 9.93 0 0 1 22 12c0 5.52-4.48 10-10 10Zm5.44-7.49c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.15 8.15 0 0 1-2.4-1.48 9.04 9.04 0 0 1-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.01-1.04 2.46s1.06 2.86 1.21 3.06c.15.2 2.09 3.19 5.07 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35Z" fill="white"/></svg>
-          Agendar pelo WhatsApp
+          Agendar Consulta no WhatsApp
         </a>
         <a class="btn-outline" href="agenda.html">
           📅 Ver Horários Disponíveis
         </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>4.8</strong><span>⭐ no Google</span></div>
+        <div class="hero-stat"><strong>+14.490</strong><span>consultas realizadas</span></div>
+        <div class="hero-stat"><strong>desde 2004</strong><span>no Guará</span></div>
       </div>
     </div>
   </div>
@@ -581,12 +600,12 @@
       <span class="cont-label">⭐ Avaliações no Google</span>
     </div>
     <div class="cont-item reveal">
-      <span class="cont-num" data-target="4" data-suffix=".8">0</span>
-      <span class="cont-label">★ Nota média</span>
+      <span class="cont-num" data-target="14490" data-prefix="+">0</span>
+      <span class="cont-label">🐾 Consultas realizadas</span>
     </div>
     <div class="cont-item reveal">
-      <span class="cont-num" data-target="5000" data-prefix="+">0</span>
-      <span class="cont-label">🐾 Pets atendidos</span>
+      <span class="cont-num" data-target="22" data-prefix="+">0</span>
+      <span class="cont-label">📅 Anos de experiência</span>
     </div>
   </div>
 </div>
@@ -601,44 +620,44 @@
       <div class="card">
         <div class="card-icon">🩺</div>
         <h3>Consulta Veterinária</h3>
-        <p>Atendimento clínico geral: diagnóstico, prevenção, vacinas e acompanhamento da saúde do seu pet.</p>
+        <p>Avaliação clínica completa para cães e gatos, com diagnóstico e acompanhamento.</p>
         <a class="card-link" href="consulta-veterinaria.html">Saiba mais →</a>
-      </div>
-      <div class="card">
-        <div class="card-icon">⚕️</div>
-        <h3>Cirurgia Veterinária</h3>
-        <p>Procedimentos cirúrgicos com segurança e cuidado, com acompanhamento antes, durante e depois.</p>
-        <a class="card-link" href="cirurgia-veterinaria.html">Saiba mais →</a>
       </div>
       <div class="card">
         <div class="card-icon">💉</div>
         <h3>Vacinação</h3>
-        <p>Vacinas essenciais para cães e gatos, com calendário vacinal montado pelo veterinário.</p>
+        <p>Vacinas essenciais com calendário vacinal montado pelo veterinário.</p>
         <a class="card-link" href="vacinacao-veterinaria.html">Saiba mais →</a>
-      </div>
-      <div class="card">
-        <div class="card-icon">🩻</div>
-        <h3>Ultrassom Veterinário</h3>
-        <p>Exame de imagem indolor e não invasivo para diagnóstico preciso, sem sair da clínica.</p>
-        <a class="card-link" href="ultrassom-veterinario.html">Saiba mais →</a>
       </div>
       <div class="card">
         <div class="card-icon">🔬</div>
         <h3>Exames Veterinários</h3>
-        <p>Exames laboratoriais e de imagem com agilidade no diagnóstico: hemograma, bioquímica e mais.</p>
+        <p>Exames laboratoriais e de imagem com agilidade no diagnóstico.</p>
         <a class="card-link" href="exames-veterinarios.html">Saiba mais →</a>
       </div>
       <div class="card">
-        <div class="card-icon">🚑</div>
-        <h3>Atendimento de Urgência</h3>
-        <p>Casos urgentes de cães e gatos com prioridade, dentro do horário de funcionamento da clínica.</p>
-        <a class="card-link" href="emergencia-veterinaria.html">Saiba mais →</a>
+        <div class="card-icon">⚕️</div>
+        <h3>Cirurgia Veterinária</h3>
+        <p>Procedimentos cirúrgicos com acompanhamento antes, durante e depois.</p>
+        <a class="card-link" href="cirurgia-veterinaria.html">Saiba mais →</a>
       </div>
       <div class="card">
         <div class="card-icon">🏨</div>
         <h3>Internação Veterinária</h3>
-        <p>Internação com acompanhamento de um veterinário para observação, tratamento e recuperação do pet.</p>
+        <p>Internação com acompanhamento de um veterinário durante a recuperação.</p>
         <a class="card-link" href="internacao-veterinaria.html">Saiba mais →</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚑</div>
+        <h3>Atendimento de Urgência</h3>
+        <p>Casos urgentes com prioridade, dentro do horário de funcionamento.</p>
+        <a class="card-link" href="emergencia-veterinaria.html">Saiba mais →</a>
+      </div>
+      <div class="card">
+        <div class="card-icon">🩻</div>
+        <h3>Ultrassom Veterinário</h3>
+        <p>Exame de imagem indolor e não invasivo para diagnóstico preciso.</p>
+        <a class="card-link" href="ultrassom-veterinario.html">Saiba mais →</a>
       </div>
       <div class="card">
         <div class="card-icon">💊</div>
@@ -878,15 +897,18 @@
       <img src="images/vet-cuidado.jpg" alt="Clínica veterinária DS VET Guará II Brasília" loading="lazy" />
       <div>
         <div class="section-tag">Sobre a DS VET</div>
-        <h2>Uma clínica veterinária construída com propósito</h2>
-        <p style="font-size:16px;color:#4B5563;line-height:1.75;margin-top:14px;margin-bottom:20px;">A <strong>DS VET</strong> nasceu da vontade de oferecer ao Guará II e região uma clínica veterinária completa, acessível e de confiança, com diagnóstico por imagem, especialidades e uma equipe comprometida com cada animal.</p>
-        <p style="font-size:16px;color:#4B5563;line-height:1.75;margin-bottom:24px;">Somos referência para tutores do Guará, Cruzeiro, Octogonal, Asa Sul, Taguatinga e entorno, atendendo cães e gatos com o mesmo cuidado que dedicaríamos ao nosso próprio pet.</p>
-        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:28px;">
-          <div style="background:var(--green-light);padding:10px 16px;border-radius:10px;font-size:13px;font-weight:600;color:var(--green-dark);">✅ CRMV regularizado</div>
+        <h2>Cuidando dos pets do Guará desde 2004</h2>
+        <p style="font-size:16px;color:#4B5563;line-height:1.75;margin-top:14px;margin-bottom:20px;">A <strong>DS VET</strong> nasceu em 2004 da vontade de oferecer ao Guará II e região uma clínica veterinária completa, acessível e de confiança. São mais de 20 anos cuidando de cães e gatos como parte da família, com diagnóstico por imagem, especialidades e uma equipe comprometida com cada animal.</p>
+        <p style="font-size:16px;color:#4B5563;line-height:1.75;margin-bottom:24px;">Somos referência para tutores do Guará, Cruzeiro, Octogonal, Asa Sul, Taguatinga e entorno, atendendo cada pet com o mesmo cuidado que dedicaríamos ao nosso próprio.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px;">
+          <div style="background:var(--green-light);padding:10px 16px;border-radius:10px;font-size:13px;font-weight:600;color:var(--green-dark);">✅ Desde 2004 no Guará</div>
           <div style="background:var(--green-light);padding:10px 16px;border-radius:10px;font-size:13px;font-weight:600;color:var(--green-dark);">✅ Especialidades veterinárias</div>
-          <div style="background:var(--green-light);padding:10px 16px;border-radius:10px;font-size:13px;font-weight:600;color:var(--green-dark);">✅ +5.000 pets atendidos</div>
+          <div style="background:var(--green-light);padding:10px 16px;border-radius:10px;font-size:13px;font-weight:600;color:var(--green-dark);">✅ +14.490 consultas realizadas</div>
           <div style="background:var(--green-light);padding:10px 16px;border-radius:10px;font-size:13px;font-weight:600;color:var(--green-dark);">✅ 4.8 ⭐ no Google</div>
         </div>
+        <p style="font-size:14px;color:#4B5563;margin-bottom:24px;border-left:3px solid var(--green);padding-left:14px;">
+          <strong style="color:var(--green-dark);">Dr. Delcio Azevedo Santos</strong><br>Responsável Técnico — DS VET Clínica Veterinária
+        </p>
         <a class="btn-wpp" href="https://wa.me/5561993939232?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" style="display:inline-flex;background:#124D28;gap:10px;padding:14px 28px;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;font-size:15px;">
           Agendar com a equipe DS VET
         </a>
@@ -945,8 +967,8 @@
 <!-- ── CTA PRINCIPAL ── -->
 <section class="cta-section">
   <div class="container">
-    <h2>Agende agora pelo WhatsApp</h2>
-    <p>Atendimento rápido, sem complicação. Fale com a gente e marque a consulta do seu pet hoje mesmo.</p>
+    <h2>Fale com a equipe da DS VET pelo WhatsApp</h2>
+    <p>Mais de 20 anos cuidando dos pets do Guará, com 4.8 ⭐ no Google. Agende a consulta do seu pet com quem entende e cuida de verdade.</p>
     <a class="btn-wpp" href="https://wa.me/5561993939232?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20para%20meu%20pet." target="_blank" rel="noopener" style="display:inline-flex;">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.99L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52ZM12 22c-1.85 0-3.66-.5-5.24-1.44l-.37-.22-3.89 1.02 1.04-3.79-.24-.38A9.93 9.93 0 0 1 2 12C2 6.48 6.48 2 12 2c2.67 0 5.18 1.04 7.07 2.93A9.93 9.93 0 0 1 22 12c0 5.52-4.48 10-10 10Zm5.44-7.49c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07a8.15 8.15 0 0 1-2.4-1.48 9.04 9.04 0 0 1-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.01-1.04 2.46s1.06 2.86 1.21 3.06c.15.2 2.09 3.19 5.07 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35Z" fill="white"/></svg>
       Agendar Consulta Agora
@@ -1206,21 +1228,44 @@
 
 <!-- ── FOOTER ── -->
 <footer>
-  <strong>DS VET | Clínica Veterinária</strong><br>
-  QE 40 Conjunto K, Loja 12, Guará II, Brasília/DF &nbsp;|&nbsp;
-  <a href="tel:+5561993939232">(61) 99393-9232</a> &nbsp;|&nbsp;
-  <a href="https://instagram.com/dsveterinaria" target="_blank">@dsveterinaria</a><br><br>
-  <span style="display:inline-block; line-height:2;">
-    <strong style="font-size:12px; letter-spacing:.5px;">SERVIÇOS:</strong>
-    <a href="consulta-veterinaria.html">Consulta Veterinária</a> &nbsp;·&nbsp;
-    <a href="vacinacao-veterinaria.html">Vacinação</a> &nbsp;·&nbsp;
-    <a href="exames-veterinarios.html">Exames</a> &nbsp;·&nbsp;
-    <a href="ultrassom-veterinario.html">Ultrassom</a> &nbsp;·&nbsp;
-    <a href="cirurgia-veterinaria.html">Cirurgia</a> &nbsp;·&nbsp;
-    <a href="emergencia-veterinaria.html">Urgência</a> &nbsp;·&nbsp;
-    <a href="internacao-veterinaria.html">Internação</a>
-  </span><br><br>
-  © 2026 DS VET. Desenvolvido por <strong>AQV Agência</strong>.
+  <div style="max-width:1060px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;text-align:left;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.12);">
+    <div>
+      <strong style="font-size:15px;">DS VET | Clínica Veterinária</strong><br>
+      <span style="display:block;margin-top:8px;">QE 40 Conjunto K, Loja 12<br>Guará II, Brasília/DF — 71070-112</span>
+      <span style="display:block;margin-top:8px;">Dr. Delcio Azevedo Santos<br>Responsável Técnico</span>
+    </div>
+    <div>
+      <strong style="font-size:13px;letter-spacing:.5px;">ATENDIMENTO</strong>
+      <span style="display:block;margin-top:8px;">Seg a Sex: 08h30 às 17h30<br>Sábado: 09h às 14h</span>
+      <span style="display:block;margin-top:8px;">
+        <a href="tel:+5561993939232">(61) 99393-9232</a><br>
+        <a href="https://wa.me/5561993939232" target="_blank">WhatsApp</a> ·
+        <a href="https://instagram.com/dsveterinaria" target="_blank">@dsveterinaria</a>
+      </span>
+    </div>
+    <div>
+      <strong style="font-size:13px;letter-spacing:.5px;">SERVIÇOS</strong>
+      <span style="display:block;margin-top:8px;line-height:1.9;">
+        <a href="consulta-veterinaria.html">Consulta Veterinária</a><br>
+        <a href="vacinacao-veterinaria.html">Vacinação</a><br>
+        <a href="exames-veterinarios.html">Exames</a><br>
+        <a href="ultrassom-veterinario.html">Ultrassom</a><br>
+        <a href="cirurgia-veterinaria.html">Cirurgia</a><br>
+        <a href="emergencia-veterinaria.html">Urgência</a><br>
+        <a href="internacao-veterinaria.html">Internação</a>
+      </span>
+    </div>
+    <div>
+      <strong style="font-size:13px;letter-spacing:.5px;">LINKS RÁPIDOS</strong>
+      <span style="display:block;margin-top:8px;line-height:1.9;">
+        <a href="index.html">Início</a><br>
+        <a href="agenda.html">Agendar Consulta</a><br>
+        <a href="blog.html">Blog</a><br>
+        <a href="#sobre">Sobre a DS VET</a>
+      </span>
+    </div>
+  </div>
+  <div style="padding-top:20px;">© 2026 DS VET Clínica Veterinária. Desenvolvido por <strong>AQV Agência</strong>.</div>
 </footer>
 
 
