@@ -1509,9 +1509,16 @@ function renderizarReviews(reviews) {
   const nomesExistentes = Array.from(track.querySelectorAll('.dep-author'))
     .map(el => el.textContent.replace('· Google', '').trim().toLowerCase());
 
-  const novos = reviews.filter(r =>
-    r.author_name && !nomesExistentes.includes(r.author_name.trim().toLowerCase())
-  );
+  // Nomes a ocultar dos depoimentos (ex.: a propria agencia)
+  const nomesOcultos = ['anuncio que vende', 'anúncio que vende', 'aqv'];
+
+  const novos = reviews.filter(r => {
+    if (!r.author_name) return false;
+    const nome = r.author_name.trim().toLowerCase();
+    if (nomesExistentes.includes(nome)) return false;
+    if (nomesOcultos.includes(nome)) return false;
+    return true;
+  });
 
   const html = novos.map(r => {
     const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
