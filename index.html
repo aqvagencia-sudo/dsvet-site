@@ -268,7 +268,12 @@
       transition: transform .2s, box-shadow .2s;
     }
     .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
-    .card-icon { font-size: 32px; margin-bottom: 12px; }
+    .card-icon { margin-bottom: 14px; line-height: 0; }
+    .card-icon svg {
+      width: 30px; height: 30px; color: var(--green); stroke-width: 1.75;
+      background: var(--green-light); padding: 9px; border-radius: 10px;
+      box-sizing: content-box;
+    }
     .card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
     .card p { font-size: 14px; color: var(--gray); line-height: 1.6; }
     .card-link {
@@ -290,7 +295,8 @@
       padding: 14px 16px;
       display: flex; align-items: flex-start; gap: 12px;
     }
-    .espec-card .icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+    .espec-card .icon { flex-shrink: 0; margin-top: 2px; line-height: 0; }
+    .espec-card .icon svg { width: 24px; height: 24px; color: var(--green); stroke-width: 1.85; }
     .espec-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; color: var(--green-dark); }
     .espec-card p { font-size: 14px; color: #4B7A5E; line-height: 1.5; }
 
@@ -310,7 +316,8 @@
       padding: 16px 14px;
       text-align: center;
     }
-    .dif-item .dif-icon { font-size: 28px; margin-bottom: 8px; }
+    .dif-item .dif-icon { margin-bottom: 10px; line-height: 0; }
+    .dif-item .dif-icon svg { width: 28px; height: 28px; color: #7FD9A2; stroke-width: 1.75; }
     .dif-item h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
     .dif-item p { font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.5; }
 
@@ -544,7 +551,7 @@
   </video>
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="hero-badge">🐾 Clínica Veterinária no Guará II, Brasília</div>
+      <div class="hero-badge">Clínica Veterinária no Guará II, Brasília</div>
       <h1>Clínica veterinária no <em>Guará</em> com atendimento humanizado</h1>
       <p>Consultas, vacinas, exames e cirurgias para cães e gatos, com uma equipe que cuida do seu pet como parte da família. Tudo no Guará II.</p>
       <div class="hero-btns">
@@ -597,15 +604,15 @@
   <div class="cont-grid">
     <div class="cont-item reveal">
       <span class="cont-num" data-target="265">0</span>
-      <span class="cont-label">⭐ Avaliações no Google</span>
+      <span class="cont-label">Avaliações no Google</span>
     </div>
     <div class="cont-item reveal">
       <span class="cont-num" data-target="14490" data-prefix="+">0</span>
-      <span class="cont-label">🐾 Consultas realizadas</span>
+      <span class="cont-label">Consultas realizadas</span>
     </div>
     <div class="cont-item reveal">
       <span class="cont-num" data-target="22" data-prefix="+">0</span>
-      <span class="cont-label">📅 Anos de experiência</span>
+      <span class="cont-label">Anos de experiência</span>
     </div>
   </div>
 </div>
@@ -618,69 +625,69 @@
     <p class="subtitle reveal">Da consulta de rotina à cirurgia especializada, a DS VET oferece atendimento completo para cães e gatos no Guará II.</p>
     <div class="cards-grid">
       <div class="card">
-        <div class="card-icon">🩺</div>
+        <div class="card-icon"><i data-lucide="stethoscope"></i></div>
         <h3>Consulta Veterinária</h3>
         <p>Avaliação clínica completa para cães e gatos, com diagnóstico e acompanhamento.</p>
         <a class="card-link" href="consulta-veterinaria.html">Saiba mais →</a>
       </div>
       <div class="card">
-        <div class="card-icon">💉</div>
+        <div class="card-icon"><i data-lucide="syringe"></i></div>
         <h3>Vacinação</h3>
         <p>Vacinas essenciais com calendário vacinal montado pelo veterinário.</p>
         <a class="card-link" href="vacinacao-veterinaria.html">Saiba mais →</a>
       </div>
       <div class="card">
-        <div class="card-icon">🔬</div>
+        <div class="card-icon"><i data-lucide="microscope"></i></div>
         <h3>Exames Veterinários</h3>
         <p>Exames laboratoriais e de imagem com agilidade no diagnóstico.</p>
         <a class="card-link" href="exames-veterinarios.html">Saiba mais →</a>
       </div>
       <div class="card">
-        <div class="card-icon">⚕️</div>
+        <div class="card-icon"><i data-lucide="scissors"></i></div>
         <h3>Cirurgia Veterinária</h3>
         <p>Procedimentos cirúrgicos com acompanhamento antes, durante e depois.</p>
         <a class="card-link" href="cirurgia-veterinaria.html">Saiba mais →</a>
       </div>
       <div class="card">
-        <div class="card-icon">🏨</div>
+        <div class="card-icon"><i data-lucide="bed"></i></div>
         <h3>Internação Veterinária</h3>
         <p>Internação com acompanhamento de um veterinário durante a recuperação.</p>
         <a class="card-link" href="internacao-veterinaria.html">Saiba mais →</a>
       </div>
       <div class="card">
-        <div class="card-icon">🚑</div>
+        <div class="card-icon"><i data-lucide="ambulance"></i></div>
         <h3>Atendimento de Urgência</h3>
         <p>Casos urgentes com prioridade, dentro do horário de funcionamento.</p>
         <a class="card-link" href="emergencia-veterinaria.html">Saiba mais →</a>
       </div>
       <div class="card">
-        <div class="card-icon">🩻</div>
+        <div class="card-icon"><i data-lucide="scan"></i></div>
         <h3>Ultrassom Veterinário</h3>
         <p>Exame de imagem indolor e não invasivo para diagnóstico preciso.</p>
         <a class="card-link" href="ultrassom-veterinario.html">Saiba mais →</a>
       </div>
       <div class="card">
-        <div class="card-icon">💊</div>
+        <div class="card-icon"><i data-lucide="pill"></i></div>
         <h3>Farmácia Veterinária</h3>
         <p>Medicamentos e produtos para o tratamento do seu pet disponíveis na própria clínica.</p>
       </div>
       <div class="card">
-        <div class="card-icon">🦷</div>
+        <div class="card-icon"><i data-lucide="smile"></i></div>
         <h3>Odontologia Veterinária</h3>
         <p>Limpeza dentária, extração e tratamento de doenças bucais em cães e gatos.</p>
       </div>
       <div class="card">
-        <div class="card-icon">👁️</div>
+        <div class="card-icon"><i data-lucide="eye"></i></div>
         <h3>Oftalmologia Veterinária</h3>
         <p>Diagnóstico e tratamento de doenças oculares como catarata, glaucoma e conjuntivite.</p>
       </div>
       <div class="card">
-        <div class="card-icon">🥗</div>
+        <div class="card-icon"><i data-lucide="salad"></i></div>
         <h3>Nutrição Veterinária</h3>
         <p>Orientação nutricional para uma alimentação equilibrada e saudável para o seu pet.</p>
       </div>
       <div class="card">
-        <div class="card-icon">🏥</div>
+        <div class="card-icon"><i data-lucide="heart-pulse"></i></div>
         <h3>Clínica Médica Veterinária</h3>
         <p>Avaliação clínica completa, acompanhamento de doenças crônicas e tratamentos de longa duração.</p>
       </div>
@@ -696,49 +703,49 @@
     <p class="subtitle">A DS VET conta com especialidades veterinárias que vão além da clínica geral, com cuidado completo para cada condição.</p>
     <div class="espec-grid">
       <div class="espec-card">
-        <div class="icon">❤️</div>
+        <div class="icon"><i data-lucide="heart-pulse"></i></div>
         <div>
           <h4>Cardiologia Veterinária</h4>
           <p>Diagnóstico e tratamento de doenças cardíacas em cães e gatos.</p>
         </div>
       </div>
       <div class="espec-card">
-        <div class="icon">🌿</div>
+        <div class="icon"><i data-lucide="leaf"></i></div>
         <div>
           <h4>Dermatologia Veterinária</h4>
           <p>Tratamento de alergias, coceiras, fungos e doenças de pele.</p>
         </div>
       </div>
       <div class="espec-card">
-        <div class="icon">⚗️</div>
+        <div class="icon"><i data-lucide="flask-conical"></i></div>
         <div>
           <h4>Endocrinologia Veterinária</h4>
           <p>Diabetes, hipotireoidismo, Cushing e outros distúrbios hormonais.</p>
         </div>
       </div>
       <div class="espec-card">
-        <div class="icon">🏃</div>
+        <div class="icon"><i data-lucide="activity"></i></div>
         <div>
           <h4>Fisioterapia Veterinária</h4>
           <p>Reabilitação física para recuperação pós-cirúrgica e qualidade de vida.</p>
         </div>
       </div>
       <div class="espec-card">
-        <div class="icon">🫘</div>
+        <div class="icon"><i data-lucide="droplet"></i></div>
         <div>
           <h4>Nefrologia Veterinária</h4>
           <p>Diagnóstico e tratamento de doenças renais como insuficiência renal, pedras e infecções.</p>
         </div>
       </div>
       <div class="espec-card">
-        <div class="icon">🧠</div>
+        <div class="icon"><i data-lucide="brain"></i></div>
         <div>
           <h4>Neurologia Veterinária</h4>
           <p>Avaliação e tratamento de crises epilépticas, hérnias de disco e doenças neurológicas.</p>
         </div>
       </div>
       <div class="espec-card">
-        <div class="icon">🫁</div>
+        <div class="icon"><i data-lucide="apple"></i></div>
         <div>
           <h4>Gastroenterologia Veterinária</h4>
           <p>Tratamento de doenças do trato digestivo como vômitos, diarreia crônica e doenças intestinais.</p>
@@ -756,22 +763,22 @@
     <p class="subtitle">Mais de 265 avaliações 5 estrelas no Google não são por acaso.</p>
     <div class="dif-grid">
       <div class="dif-item">
-        <div class="dif-icon">♿</div>
+        <div class="dif-icon"><i data-lucide="accessibility"></i></div>
         <h4>Ambiente Acessível</h4>
         <p>Estrutura adaptada para todos os tutores e seus pets.</p>
       </div>
       <div class="dif-item">
-        <div class="dif-icon">💳</div>
+        <div class="dif-icon"><i data-lucide="credit-card"></i></div>
         <h4>Cartão e PIX</h4>
         <p>Aceitamos todas as formas de pagamento. Facilidade total para você.</p>
       </div>
       <div class="dif-item">
-        <div class="dif-icon">⭐</div>
+        <div class="dif-icon"><i data-lucide="star"></i></div>
         <h4>4.8 no Google</h4>
         <p>265 avaliações de tutores satisfeitos com o atendimento.</p>
       </div>
       <div class="dif-item">
-        <div class="dif-icon">📍</div>
+        <div class="dif-icon"><i data-lucide="map-pin"></i></div>
         <h4>Localização Central</h4>
         <p>Guará II, atendendo também Cruzeiro, Sudoeste e Octogonal.</p>
       </div>
@@ -805,63 +812,38 @@
         <div class="carousel-track" id="carTrack">
 
           <div class="dep-card">
-            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Juliana&background=E53935&color=fff&size=40&bold=true" alt="Juliana"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Juliana <span>· Google</span></div></div></div>
-            <p class="dep-text">"Ótimo lugar e bom preço para vacinas e consulta. Atendimento excelente!"</p>
+            <div class="dep-top"><img class="dep-avatar-img" src="images/dep-alessandro.jpg" alt="Alessandro Oliveira" loading="lazy"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Alessandro Oliveira <span>· Google</span></div></div></div>
+            <p class="dep-text">"Quero deixar meus sinceros agradecimentos a toda a Equipe da DSVet, principalmente ao meu querido amigo Dr. Delcio pelo atendimento e atenção desprendida a Mel, nossa mascote que precisou ser submetida a um procedimento cirúrgico. Todos da DSVet estão de parabéns, muito obrigado por tudo."</p>
           </div>
 
           <div class="dep-card">
-            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Amanda+Grei&background=8E24AA&color=fff&size=40&bold=true" alt="Amanda Grei"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Amanda Grei <span>· Google</span></div></div></div>
-            <p class="dep-text">"Profissionais capacitados, ambiente agradável, equipe educada. Super recomendo!"</p>
+            <div class="dep-top"><img class="dep-avatar-img" src="images/dep-raquel.jpg" alt="Raquel Costa Goncalves" loading="lazy"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Raquel Costa Goncalves <span>· Google</span></div></div></div>
+            <p class="dep-text">"Fui atendida pela Dra Júlia, que cuidou e cuida dos olhinhos dos meus pugs. Ela é ótima! E o atendimento da clínica também é nota 10. Recomendo muito!!"</p>
           </div>
 
           <div class="dep-card">
-            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Raquel+Carneiro&background=1E88E5&color=fff&size=40&bold=true" alt="Raquel Lacis Carneiro"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Raquel Lacis Carneiro <span>· Google</span></div></div></div>
-            <p class="dep-text">"Os veterinários são ótimos, muito atenciosos. Senti que realmente se importam com o bem-estar do meu pet."</p>
+            <div class="dep-top"><img class="dep-avatar-img" src="images/dep-juliana.jpg" alt="Juliana Nascimento" loading="lazy"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Juliana Nascimento <span>· Google</span></div></div></div>
+            <p class="dep-text">"Super indico, atendimento atencioso, cuidadoso, tem muito conhecimento. Clínica com os veterinários ótimos, cuidaram muito bem do meu Nick."</p>
           </div>
 
           <div class="dep-card">
-            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Yago+Torres&background=00897B&color=fff&size=40&bold=true" alt="Yago Torres"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Yago Torres <span>· Google</span></div></div></div>
-            <p class="dep-text">"Clínica muito bem equipada, atendimento rápido e profissional. Recomendo muito para quem mora no Guará!"</p>
+            <div class="dep-top"><img class="dep-avatar-img" src="images/dep-anaclara.jpg" alt="Ana Clara Rodrigues" loading="lazy"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Ana Clara Rodrigues <span>· Google</span></div></div></div>
+            <p class="dep-text">"Só tenho elogios a fazer a essa clínica! A equipe é sempre extremamente atenciosa e cuidadosa."</p>
           </div>
 
           <div class="dep-card">
-            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Jalvino+Nascimento&background=F4511E&color=fff&size=40&bold=true" alt="Jalvino Nascimento"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Jalvino Nascimento <span>· Google</span></div></div></div>
-            <p class="dep-text">"Atendimento nota 10! Equipe muito dedicada e atenciosa. Meu pet ficou super bem cuidado."</p>
+            <div class="dep-top"><img class="dep-avatar-img" src="images/dep-julia.jpg" alt="Júlia Carvalho" loading="lazy"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Júlia Carvalho <span>· Google</span></div></div></div>
+            <p class="dep-text">"Atendimento sempre cuidadoso, atencioso e prestativo. Eu e meu gatinho apreciamos muito o trabalho de todos os componentes da equipe da DS VET."</p>
           </div>
 
           <div class="dep-card">
-            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Nilar+Martins&background=039BE5&color=fff&size=40&bold=true" alt="Nilar Martins"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Nilar Martins <span>· Google</span></div></div></div>
-            <p class="dep-text">"Excelente clínica! Ambiente limpo, organizado e equipe muito atenciosa. Com certeza voltarei sempre."</p>
+            <div class="dep-top"><img class="dep-avatar-img" src="images/dep-danillo.jpg" alt="Danillo Teixeira" loading="lazy"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Danillo Teixeira <span>· Google</span></div></div></div>
+            <p class="dep-text">"Só levo meu Pet na DS VET, atendimento excelente, recomendo a todos essa clínica veterinária! Super atenciosos excelentes profissionais!"</p>
           </div>
 
           <div class="dep-card">
-            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Jamiry+Gentil&background=43A047&color=fff&size=40&bold=true" alt="Jamiry Gentil"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Jamiry Gentil <span>· Google</span></div></div></div>
-            <p class="dep-text">"Atendimento muito bom e acolhedor. Veterinários muito competentes e carinhosos com os animais."</p>
-          </div>
-
-          <div class="dep-card">
-            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Beatriz+Lory&background=D81B60&color=fff&size=40&bold=true" alt="Beatriz de Lory"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Beatriz de Lory <span>· Google</span></div></div></div>
-            <p class="dep-text">"Super indico a DS VET! Atendimento humanizado, equipe atenciosa e resultado rápido. Melhor do Guará!"</p>
-          </div>
-
-          <div class="dep-card">
-            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Zilta+Carvalho&background=6D4C41&color=fff&size=40&bold=true" alt="Zilta Carvalho"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Zilta Carvalho <span>· Google</span></div></div></div>
-            <p class="dep-text">"Fui com minha pet pela primeira vez e fiquei encantada com o atendimento. Equipe muito profissional."</p>
-          </div>
-
-          <div class="dep-card">
-            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Jennifer+Lima&background=5E35B1&color=fff&size=40&bold=true" alt="Jennifer Lima"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Jennifer Lima <span>· Google</span></div></div></div>
-            <p class="dep-text">"Clínica incrível! Atendimento rápido, preço justo e veterinários extremamente competentes. Recomendo muito!"</p>
-          </div>
-
-          <div class="dep-card">
-            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Rafael+Ferreira&background=00ACC1&color=fff&size=40&bold=true" alt="Rafael Ferreira"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Rafael Ferreira <span>· Google</span></div></div></div>
-            <p class="dep-text">"Melhor clínica veterinária do Guará! Ótimo custo-benefício, equipe atenciosa e estrutura completa."</p>
-          </div>
-
-          <div class="dep-card">
-            <div class="dep-top"><img class="dep-avatar-img" src="https://ui-avatars.com/api/?name=Alexandre+Oliveira&background=FB8C00&color=fff&size=40&bold=true" alt="Alexandre Oliveira"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Alexandre Oliveira <span>· Google</span></div></div></div>
-            <p class="dep-text">"Excelente atendimento! Veterinários muito capacitados. Meu cachorro foi tratado com muito carinho."</p>
+            <div class="dep-top"><img class="dep-avatar-img" src="images/dep-raissa.jpg" alt="Raíssa de Oliveira" loading="lazy"><div><div class="dep-stars">★★★★★</div><div class="dep-author">Raíssa de Oliveira <span>· Google</span></div></div></div>
+            <p class="dep-text">"Ótimo atendimento e ótimos profissionais."</p>
           </div>
 
         </div>
@@ -1572,6 +1554,12 @@ function aceitarLGPD() {
   localStorage.setItem('lgpd', '1');
   document.getElementById('lgpd').style.display = 'none';
 }
+</script>
+
+<!-- ── ÍCONES LUCIDE ── -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>
+  if (window.lucide) lucide.createIcons();
 </script>
 
 </body>
