@@ -417,6 +417,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     /* ── EQUIPE BANNER ── */
     .equipe-banner { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
     @media (max-width: 680px) { .equipe-banner { grid-template-columns: 1fr; } }
+    .equipe-cta-wrap { text-align: left; }
+    @media (max-width: 680px) { .equipe-cta-wrap { text-align: center; } }
     .equipe-banner img { width: 100%; border-radius: 16px; object-fit: cover; height: 300px; box-shadow: 0 8px 32px rgba(0,0,0,.12); }
 
     /* ── CONTADORES ── */
@@ -909,9 +911,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <p style="font-size:14px;color:#4B5563;margin-bottom:24px;border-left:3px solid var(--green);padding-left:14px;">
           <strong style="color:var(--green-dark);">Dr. Delcio Azevedo Santos</strong><br>Responsável Técnico — DS VET Clínica Veterinária
         </p>
-        <a class="btn-wpp" href="https://wa.me/5561993809232?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" style="display:inline-flex;background:#124D28;gap:10px;padding:14px 28px;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;font-size:15px;">
-          Agendar com a equipe DS VET
-        </a>
+        <div class="equipe-cta-wrap">
+          <a class="btn-wpp" href="https://wa.me/5561993809232?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" style="display:inline-flex;background:#124D28;gap:10px;padding:14px 28px;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;font-size:15px;">
+            Agendar com a equipe DS VET
+          </a>
+        </div>
       </div>
     </div>
   </div>
