@@ -1,0 +1,13 @@
+# Redireciona 301 os dominios espelho para o principal (canonical)
+# O ! forca o redirect mesmo quando o caminho existe como arquivo
+# O dominio principal veterinariadsvet.com.br NAO esta listado aqui = serve normal
+
+https://dsvetguara.com.br/*        https://veterinariadsvet.com.br/:splat  301!
+http://dsvetguara.com.br/*         https://veterinariadsvet.com.br/:splat  301!
+https://www.dsvetguara.com.br/*    https://veterinariadsvet.com.br/:splat  301!
+http://www.dsvetguara.com.br/*     https://veterinariadsvet.com.br/:splat  301!
+
+https://dsvetveterinaria.com.br/*      https://veterinariadsvet.com.br/:splat  301!
+http://dsvetveterinaria.com.br/*       https://veterinariadsvet.com.br/:splat  301!
+https://www.dsvetveterinaria.com.br/*  https://veterinariadsvet.com.br/:splat  301!
+http://www.dsvetveterinaria.com.br/*   https://veterinariadsvet.com.br/:splat  301!
